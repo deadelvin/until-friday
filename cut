@@ -1,0 +1,20 @@
+  <!-- Social links -->
+  <div class="social">
+    <a href="#" data-tooltip="MySpace">★</a>
+    <a href="#" data-tooltip="AIM">✉</a>
+    <a href="#" data-tooltip="Guestbook">♡</a>
+  </div>
+
+
+                 <div class="fixed-box">
+                <h2>archive</h2>
+                <p>pics or it didnt happen</p>
+               
+                <p>a record of my emo ass-thetic </P>                    <div class="gallery-grid">
+                    <a href="placeholder.pdf" target="_blank" class="pdf-button">do you like the dark?</a>
+                    <div class="symbol right">☹</div>
+                </div>
+                </div>
+
+
+    <p><span style="font-size: 0.8rem;">small text goes here <a href="myspacesurvey.html" target="_blank">linked text</a>? Lol</span></p>

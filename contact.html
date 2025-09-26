@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="contact.">
+    <title>Contact</title>
+    <style>
+        body {
+            font-family: 'Merriweather', serif;
+            background-color: #1e1b1d;
+            color: #dbc5b9;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        /* Header Section */
+        
+        header {
+            background-color: #436243;
+            color: #1be729;
+            text-align: center;
+            padding: 3rem 1rem;
+            position: relative;
+            background-image: url('https://example.com/your-banner-image.jpg');
+            background-size: cover;
+            background-position: center;
+            backdrop-filter: blur(10px);
+        }
+
+        header h1 {
+            font-size: 3.5rem;
+            font-weight: bold;
+            text-transform: lowercase;
+            letter-spacing: 5px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        }
+        
+
+        header p {
+            font-size: 1.5rem;
+            font-style: italic;
+            margin-top: 15px;
+            color: #f0e0cf;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Navigation Bar */
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #1a1a1a;
+            border-bottom: 2px solid #1be729;
+            padding: 1rem 0;
+        }
+
+        nav a {
+            color: #dbc5b9;
+            padding: 1rem;
+            text-decoration: none;
+            transition: color 0.3s ease, border-bottom 0.3s ease;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #f7d7c2;
+            border-bottom: 2px solid #f7d7c2;
+        }
+
+        /* Main Contact Section */
+        main {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .contact-form {
+            background-color: #436243;
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 10px;
+            border: 2px solid #1be729;
+            position: relative;
+            box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.1);
+        }
+
+        .contact-form h2 {
+            font-size: 2.5rem;
+            color: #f7d7c2;
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 2px;
+            position: relative;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 1rem;
+            margin: 10px 0;
+            background-color: #436243;
+            color: #436243;
+            border: 2px solid #1be729;
+            border-radius: 5px;
+            font-size: 1.2rem;
+        }
+
+        .contact-form button {
+            width: 100%;
+            padding: 1rem;
+            background-color: #093305;
+            color: #f7d7c2;
+            border: 2px solid #1be729;
+            border-radius: 5px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: background-color 0.3s ease;
+        }
+
+        .contact-form button:hover {
+            background-color: #f7d7c2;
+            color: #302030;
+        }
+
+         /* Default link style */
+a {
+    color: #1be729 ; /* Light blue */
+    text-decoration: none; /* Removes underline */
+}
+
+/* Link hover state */
+a:hover {
+    color: #1be729; /* Slightly brighter blue for hover */
+    text-decoration: underline; /* Adds underline on hover for emphasis */
+}
+
+/* Visited link style */
+a:visited {
+    color: #1be729; /* Keep light blue even after visited */
+}
+
+/* Active link style (when clicked) */
+a:active {
+    color: #1bd9e7; /* Slightly darker blue when actively clicked */
+}
+
+       /* Social Media Icons */
+.social {
+    display: flex;
+    flex-direction: column; /* Stack text above icons */
+    align-items: center; /* Center-align content */
+    justify-content: center;
+    margin-top: 20px;
+    position: relative;
+    z-index: 5; /* Ensures social section is above other elements */
+}
+
+.social p {
+    margin-bottom: 10px; /* Adds spacing between the text and icons */
+    text-align: center; /* Ensures the text is centered */
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center; /* Centers the icons in a row */
+    gap: 15px; /* Adds spacing between icons */
+}
+
+
+.social a {
+    color: #f7d7c2;
+    margin: 0 10px;
+    font-size: 2rem;
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.3s ease;
+    position: relative;
+}
+
+.social a:hover {
+    color: #1eff00;
+    transform: scale(1.1);
+}
+
+.social a:hover::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    top: -35px; /* Ensures tooltip is further above */
+    left: 50%;
+    transform: translateX(-50%);
+    color: #1be729;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    background-color: #302030; /* Adds contrast for better readability */
+    padding: 5px 10px;
+    border-radius: 5px;
+    z-index: 10; /* Ensures tooltip is above other elements */
+    white-space: nowrap; /* Prevents text wrapping */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    animation: tooltipFade 0.5s ease-out;
+}
+
+
+        @keyframes tooltipFade {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        /* Do Not Interact and Can/Should Interact - Flexbox Layout */
+        .lists-container {
+            display: flex;
+            justify-content: space-between;
+            margin: 1rem 0;
+        }
+
+        .do-not-interact,
+        .can-should-interact {
+            width: 45%;
+        }
+
+        .do-not-interact p,
+        .can-should-interact p {
+            font-size: 1.2rem;
+            margin: 0.5rem 0;
+        }
+
+        .note {
+            font-size: 1rem;
+            font-style: italic;
+            color: #f0e0cf;
+            margin-left: 1rem;
+        }
+
+        /* In your CSS */
+.highlight {
+    color: #1c0000; /* Use any color you like */
+    font-weight: bold; /* Optional: You can also use bold */
+}
+
+        /* Animations */
+        @keyframes sparkle {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.2); opacity: 0.7; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .contact-form::before {
+            content: '';
+            color: #37ff00;
+            font-size: 5rem;
+            position: absolute;
+            top: -40px;
+            left: 47%;
+            transform: translateX(-50%);
+            animation: sparkle 1.5s infinite;
+        }
+
+        .contact-form::after {
+            content: '';
+            color: #f7d7c2;
+            font-size: 3rem;
+            position: absolute;
+            bottom: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: sparkle 1.5s infinite;
+        }
+
+        .contact-form input,
+.contact-form textarea {
+    width: 100%; /* Ensures they stay inside the form */
+    box-sizing: border-box; /* Prevents them from overflowing due to padding */
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #1be729;
+    border-radius: 5px;
+    background-color: #1a1a1a; /* Adjust to match design */
+    color: #dbc5b9; /* Text color */
+}
+
+
+        /* Footer Section */
+        footer {
+            background-color: #436243;
+            color: #f7d7c2;
+            text-align: center;
+            padding: 1rem;
+            border-top: 2px solid #1be729;
+            font-size: 1rem;
+            position: relative;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>until-friday</h1>
+        <p>would hate to hear from you 🖤</p>
+    </header>
+
+
+    <nav>
+        <a href="about.html">Home</a>
+        <a href="blog.html">Dear Void (21+)</a>
+        <a href="contact.html">Contact</a>
+       
+
+    </nav>
+
+    <main>
+        <section class="contact-form">
+            <h2>Get in Touch</h2>
+
+            <div class="social">
+                <p>[clicky icons]</p>
+                <div class="social-icons">
+   
+                        <a href="https://bsky.app/profile/until-friday.bsky.social" target="_blank" data-tooltip="bluesky">⛆</a>
+                        <a href="https://www.tiktok.com/@until_friday" target="_blank" data-tooltip="tik tok but i don't post">✘</a>
+                        <a href="blank" target="_blank" data-tooltip="not a real link lol tricked ya">☻</a>
+         
+              
+            </div>
+            
+<form id="contact-form" action="https://formspree.io/f/xjkakjjp" method="POST">
+  <input type="text" name="name" placeholder="Your Name" required>
+  <input type="email" name="email" placeholder="Your Email" required>
+  <textarea name="message" placeholder="Your Message" rows="6" required></textarea>
+  <button type="submit">Send Message</button>
+</form>
+
+<!-- Optional: show success message without leaving page -->
+<script>
+document.getElementById('contact-form').addEventListener('submit', async function(e){
+  e.preventDefault();
+  const form = e.target;
+  const data = new FormData(form);
+  const resp = await fetch(form.action, {
+    method: 'POST',
+    body: data,
+    headers: { 'Accept': 'application/json' }
+  });
+  if (resp.ok) {
+    form.reset();
+    alert('Message sent — thanks!');
+  } else {
+    alert('Oops — there was a problem. Try again later.');
+  }
+});
+</script>
+
+
+        </section>
+
+        </section>
+    </main>
+
+
+    <footer>
+        <p>© <span id="copyright-year"></span> until-friday | All rights reserved. </p>
+    </footer>
+    
+    <script>
+        document.getElementById("copyright-year").textContent = new Date().getFullYear();
+    </script>
+
+</body>
+</html>
+
