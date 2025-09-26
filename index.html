@@ -3,68 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Witchcraft Store & Community Center - Classes, Research, and Gatherings">
-    <title>until-friday, Co., Occult Research</title>
+    <meta name="description" content="Learn about the founder .">
+    <title>About the Blog - Until-Friday.</title>
+    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
     <style>
+        /* Base Styles */
         body {
             font-family: 'Merriweather', serif;
-            background-color: #1e1b1d;
-            color: #dbc5b9;
+            background-color: #101010;
+            color: #d8c3a5;
             margin: 0;
             padding: 0;
+            line-height: 1.6;
         }
 
-        /* Header Section */
+        /* Header Styles */
         header {
-    background-color: #436243;
-    color: #1be729;
-    text-align: center;
-    padding: 3rem 1rem;
-    position: relative;
-    background-image: url('https://example.com/your-banner-image.jpg');
-    background-size: cover;
-    background-position: center;
-    backdrop-filter: blur(10px); /* Apply the blur effect here */
-}
+            background-color: #436243;
+            color: #f5e8d0;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+            border-bottom: 2px solid #1be729;
+        }
 
-/* Updated Header Section */
-header {
-    background-color: #436243;
-    color: #1be729;
-    text-align: center;
-    padding: 3rem 10rem;
-    position: relative;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: 3px;
+            text-shadow: 2px 2px 5px #1a1a1a;
+            font-family: 'Special Elite', cursive;
+        }
 
-header .header-image {
-    width: 100px; /* Adjust size as needed */
-    height: auto;
-    margin: 0 1rem; /* Small margin for spacing */
-}
+        header p {
+            font-size: 1.5rem;
+            font-style: italic;
+            margin: 0;
+            font-family: 'Special Elite', cursive;
+        }
 
-header .header-title {
-    flex-grow: 1;
-    text-align: center;
-}
-
-header h1 {
-    font-size: 3.5rem;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 5px;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-    margin: 0;
-}
-
-header p {
+        /* Subheader Styles */
+.subheader {
+    margin: 1.5rem 0 0.5rem;
     font-size: 1.5rem;
-    font-style: italic;
-    margin-top: 0.5rem;
-    color: #f0e0cf;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+    font-family: 'Special Elite', cursive;
+    color: #f5e8d0;
+    text-indent: 0; /* No indentation */
+}
+
+/* Keep paragraph style with indentation */
+.founder-story p {
+    text-indent: 40px;
+    text-align: justify;
 }
 
 
@@ -78,93 +69,144 @@ header p {
         }
 
         nav a {
-            color: #1be729;
-            padding: 1rem;
+            color: #d8c3a5;
+            padding: 0.8rem 1.5rem;
             text-decoration: none;
-            transition: color 0.3s ease, border-bottom 0.3s ease;
             font-weight: bold;
+            transition: color 0.3s ease, border-bottom 0.3s ease;
         }
 
         nav a:hover {
-            color: #f7d7c2;
-            border-bottom: 2px solid #f7d7c2;
+            color: #f5e8d0;
+            border-bottom: 2px solid #f5e8d0;
         }
 
-        /* Main Content Section */
+        /* Main Content Styles */
         main {
-            padding: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        /* Services, Community, and Merchandise Sections */
-        .services,
-        .community,
-        .merchandise {
-            background-color: #436243;
-            padding: 2rem;
-            margin: 2rem 0;
+            max-width: 800px;
+            margin: 2rem auto;
+            background: #1e1e1e;
+            border: 1px solid #1be729;
             border-radius: 10px;
-            border: 2px solid #1be729;
-            position: relative;
-            text-align: center;
+            padding: 2rem;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
         }
 
-        .services::before,
-        .community::before,
-        .merchandise::before {
-            content: '⛓️‍💥🧠⛓️‍💥';
-            color: #f7d7c2;
-            font-size: 3rem;
-            position: absolute;
-            top: -30px;
-            left: 45%;
-            transform: translateX(-50%);
-            animation: sparkle 1.5s infinite;
-        }
-
-        .services h2,
-        .community h2,
-        .merchandise h2 {
+        /* Section Heading */
+        .about-heading {
             font-size: 2.5rem;
+            text-align: center;
             color: #1be729;
-            text-transform: uppercase;
-            font-weight: bold;
-            letter-spacing: 2px;
+            margin-bottom: 1.5rem;
+            text-shadow: 1px 1px 5px #000;
             position: relative;
+            font-family: 'Special Elite', cursive;
         }
 
-        .services p,
-        .community p,
-        .merchandise p {
-            font-size: 1.3rem;
+        .about-heading::before,
+        .about-heading::after {
+            content: '𓆣';
+            font-size: 2rem;
             color: #1be729;
-            margin-top: 10px;
+            position: absolute;
+            top: 0;
+            animation: pulse 1.5s infinite;
+        }
+/* Animation for pulsing effect */
+@keyframes pulse {
+    0% {
+        transform: translateY(-50%) scale(1);
+    }
+    50% {
+        transform: translateY(-50%) scale(1.2);
+    }
+    100% {
+        transform: translateY(-50%) scale(1);
+    }
         }
 
-        .services a,
-        .community a,
-        .merchandise a {
-            color: #dbc5b9;
-            font-weight: bold;
-            text-decoration: none;
-            padding: 10px 20px;
-            background-color: #1be729;
-            border-radius: 5px;
-            margin-top: 20px;
-            display: inline-block;
-            transition: background-color 0.3s ease;
+        .about-heading::before {
+            left: -40px;
         }
 
-        .services a:hover,
-        .community a:hover,
-        .merchandise a:hover {
-            background-color: #f7d7c2;
-            color: #302030;
+        .about-heading::after {
+            right: -40px;
         }
 
-           /* Social Media Icons */
-           .social {
+        .founder-img {
+    display: block;
+    margin: 0 auto;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 4px solid #1be729;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
+    object-fit: cover;
+}
+
+/* In your CSS */
+.highlight {
+    color: #1be729; /* Use any color you like */
+    font-weight: bold; /* Optional: You can also use bold */
+}
+
+
+        /* Founder Story */
+        .founder-story {
+            font-family: 'Merriweather', serif;
+            font-size: 1.2rem;
+            margin-top: 2rem;
+            text-align: justify;
+            text-indent: 40px;
+        }
+
+        .founder-story::before,
+        .founder-story::after {
+            content: '𖦤 ﮩـﮩﮩ٨ـ♡ﮩ٨ـﮩﮩ٨ـ💀';
+            font-size: 2rem;
+            display: block;
+            text-align: center;
+            color: #1be729;
+            margin: 2rem auto;
+            opacity: 0.8;
+            animation: pulse 1.5s infinite;
+        }
+/* Animation for pulsing effect */
+@keyframes pulse {
+    0% {
+        transform: translateY(-50%) scale(1);
+    }
+    50% {
+        transform: translateY(-50%) scale(1.2);
+    }
+    100% {
+        transform: translateY(-50%) scale(1);
+    }
+        }
+
+        .founder-story::after {
+            content: '';
+            animation: pulse 1.5s infinite;
+        }
+/* Animation for pulsing effect */
+@keyframes pulse {
+    0% {
+        transform: translateY(-50%) scale(1);
+    }
+    50% {
+        transform: translateY(-50%) scale(1.2);
+    }
+    100% {
+        transform: translateY(-50%) scale(1);
+    }
+}
+
+        .small-text {
+    font-size: 0.8rem; /* Adjust this to whatever size you like */
+}
+
+   /* Social Media Icons */
+   .social {
     display: flex;
     justify-content: center;
     margin-top: 20px;
@@ -182,7 +224,7 @@ header p {
 }
 
 .social a:hover {
-    color: #00ff0d;
+    color: #f7d7c2;
     transform: scale(1.1);
 }
 
@@ -206,103 +248,325 @@ header p {
 }
 
 
-        /* Footer Section */
+
+        /* Footer */
         footer {
-            background-color: #1be729;
-            color: #000000;
             text-align: center;
-            padding: 1rem;
-            border-top: 2px solid #1be729;
-            font-size: 1rem;
-            position: relative;
-        }
-
-        footer p {
-            margin: 0;
-        }
-
-        /* Animations */
-        @keyframes sparkle {
-            0% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.2); opacity: 0.7; }
-            100% { transform: scale(1); opacity: 1; }
-        }
-
-        /* Occult Borders */
-        .services::after,
-        .community::after,
-        .merchandise::after {
-            content: '';
+            background-color: #2c2a33;
             color: #1be729;
-            font-size: 3rem;
+            padding: 1rem;
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            border-top: 2px solid #1be729;
+        }
+
+        footer a {
+            color: #1be729;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Default link style */
+a {
+    color: #1be729 ; /* Light blue */
+    text-decoration: none; /* Removes underline */
+}
+
+/* Link hover state */
+a:hover {
+    color: #1be729; /* Slightly brighter blue for hover */
+    text-decoration: underline; /* Adds underline on hover for emphasis */
+}
+
+/* Visited link style */
+a:visited {
+    color: #1be729; /* Keep light blue even after visited */
+}
+
+/* Active link style (when clicked) */
+a:active {
+    color: #1bd9e7; /* Slightly darker blue when actively clicked */
+}
+
+
+/* Gallery container and grid styling */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin: 20px;
+    padding: 0;
+    justify-items: center;
+}
+
+/* Individual gallery item */
+.gallery-item {
+    text-align: center; /* Center-align text (captions) */
+}
+
+/* Image styles */
+.gallery-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-item img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Caption styles */
+.gallery-caption {
+    font-size: 0.9rem;
+    color: #d8c3a5; /* Soft beige tone */
+    margin-top: 8px;
+    font-family: 'Georgia', serif;
+    text-shadow: none; /* Removed the glow effect for better readability */
+}
+
+
+/* Family Tree Section */
+.family-tree {
+    padding: 2rem;
+    text-align: center;
+    background-color: #436243;
+    color: #dbc5b9;
+    border: 2px solid #1be729;
+    border-radius: 10px;
+    margin: 2rem 0;
+}
+
+.family-tree h2 {
+    font-family: 'Special Elite', serif;
+    font-size: 2.5rem;
+    color: #dbc5b9;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+}
+
+.family-tree p {
+    font-size: 1rem;
+    color: #c8b9a6;
+    margin-bottom: 2rem;
+}
+
+/* PDF Button Styling */
+.pdf-button {
+    padding: 12px 24px;
+    background-color: #292727;
+    color: #1be729;
+    font-size: 1.5rem;
+    font-family: 'Special Elite', serif;
+    border: none;
+    border-radius: 8px;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+}
+
+.pdf-button:hover {
+    background-color: #dbc5b9;
+    color: #3b2f37;
+}
+
+/* Founder Layout */
+.founder-layout {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 2rem auto;
+    background: none; /* Background applied to individual sections */
+    padding: 0;
+}
+
+/* Left Column Styling */
+.left-column {
+    background-color: #1e1e1e;
+    border: 1px solid #1be729;
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+}
+
+/* Right Column Styling */
+.right-column {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* Fixed Boxes */
+.fixed-box {
+    background-color: #436243;
+    border: 2px solid #1be729;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    color: #1be729;
+    font-family: 'Merriweather', serif;
+    text-align: center;
+    position: sticky;
+    top: 1rem; /* Adjusts how far down from the top the first box is */
+}
+
+.fixed-box h3 {
+    font-family: 'Special Elite', cursive;
+    font-size: 1.5rem;
+    color: #f5e8d0;
+    margin-bottom: 0.5rem;
+}
+
+.fixed-box p {
+    font-size: 1rem;
+    color: #dbc5b9;
+}
+
+        /* SYMBOLS */
+        .symbol {
             position: absolute;
-            bottom: -20px;
-            left: 50%;
-            transform: translateX(-50%);
-            animation: sparkle 1.5s infinite;
+            font-size: 3rem;
+            color: rgba(242, 228, 185, 0.6);
+            animation: glow 5s infinite ease-in-out;
         }
 
-        /* Mobile View */
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 2.5rem;
-            }
-
-            header p {
-                font-size: 1.2rem;
-            }
-
-            nav {
-                flex-direction: column;
-            }
-
-            nav a {
-                padding: 0.8rem;
-            }
-
-            .services, .community, .merchandise {
-                padding: 1.5rem;
-                margin: 1.5rem 0;
-            }
-
-            .services h2, .community h2, .merchandise h2 {
-                font-size: 2rem;
-            }
+        .symbol.left {
+            top: 20px;
+            left: 40px;
         }
+
+        .symbol.right {
+            top: 20px;
+            right: 40px;
+        }
+
+        @keyframes glow {
+    0% {
+        text-shadow: 0 0 5px #f1ffec99, 0 0 20px rgba(255, 255, 255, 0.8);
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(-15deg); /* Tilts left first */
+    }
+    50% {
+        text-shadow: 0 0 10px rgb(197, 255, 203), 0 0 30px rgb(210, 255, 213);
+        transform: rotate(15deg); /* Tilts right */
+    }
+    75% {
+        transform: rotate(-15deg); /* Tilts left again */
+    }
+    100% {
+        transform: rotate(0deg); /* Returns to center */
+    }
+}
+
+
+ul {
+    list-style: none; /* Ensures no default bullets */
+    padding-left: 0; /* Removes default padding */
+}
+
+ul li {
+    color: #dbc5b9; /* Matches text color with other columns */
+    display: flex;
+    align-items: center; /* Aligns text and arrow symbol properly */
+}
+
+ul li::before {
+    content: "➵"; /* Custom arrow bullet */
+    color: #1be729; /* Keeps arrow green */
+    font-size: 1.5rem; /* Adjust size */
+    margin-right: 10px; /* Adds spacing between bullet and text */
+}
+
+
+
     </style>
 </head>
 <body>
-
     <header>
-        <div class="header-title">
-            <h1>until-friday</h1>
-            <p>dead-elvin</p>
-        </div>
+         <h1>until-friday</h1>
+            <p>a blog by dead-elvin</p>
     </header>
-    
-    
     <nav>
+
         <a href="about.html">Home</a>
         <a href="blog.html">Dear Void (21+)</a>
+
+        <a href="contact.html">Contact</a>
+
     </nav>
 
-
-
-    <main>
-       <section class="services">
-        <h2>About</h2>
+        <main class="founder-layout">
+            <!-- Left Column: Bio -->
+            <div class="left-column">
+                <h2 class="about-heading">aboot</h2>
+                <img src="waxlips.png" alt="The Founder" class="founder-img">
+                <div class="founder-story">
+                    <h4 class="subheader">my heartache, manifest</h4>  
         <p> vibe here is adderall and energy drinks</p>
         <p> every therapist i've had has ditched me and i get it b/c the mental health service industry is overworked but now i honestly have nothing to turn to but the void so pls just let me vent here because i'm a Millennial who doesn't know better and go away if it's too negative for you.</p>
         <p> disclaimer - i am not a risk or suic*dal.</p> 
+         
+                </div>
+                
+            </div>
 
 
-            <div class="social">
+
+            
+        
+                <section class="gallery">
+                    
+
+            </div>
+
+            <!-- Right Column: Fixed Boxes -->
+            <div class="right-column">
+
+
+                <div class="fixed-box">
+                    <h3>favorite bands</h3>
+                    <p>Black Veil Brides, Linkin Park, My Chemical Romance, Pierce The Veil, Falling in Reverse, Paramore, Evanescence, Korn, Avenged Sevenfold, Yungblud, Death Cab for Cutie, Motionless in White, Papa Roach, Green Day, The Offspring, Johnnie Guilbert, Måneskin, Hozier, Owl City, grandson, Die Antwoord, Unheilig, MARINA, Billie Eilish...</p>                    <div class="symbol left"></div>
+                    <div class="symbol left"></div>
+
+                    <div class="symbol right">💿</div>
+                </div> 
+                
+ 
+
+
+
+             <div class="fixed-box">
+                 <h2>topics</h2>
+                 <p>fixations that might appear in blog</p>
+                 <ul>
+                    <li>witchcraft, vampires</li>
+                    <li>gramsci</li>
+                    <li>kink</li>
+                  </ul>
+                  <div class="symbol right">📑</div>
+                </div>
+            </div>
+    
+
+        </main>
+
+        
+    </main>
+
+         <div class="social">
         <a href="https://bsky.app/profile/until-friday.bsky.social" target="_blank" data-tooltip="Bluesky">⛆</a>
         <a href="https://www.tiktok.com/@until_friday" target="_blank" data-tooltip="tiktok">✘</a>
         <a href="blank" target="_blank" data-tooltip="This Isn't Really a Link But I wanted Three Images Here That Looked Clickable Sorry">☻</a>
     </div>
-
-    </main>
 
     <footer>
         <p>© <span id="copyright-year"></span> until-friday | All rights reserved. </p>
@@ -311,6 +575,7 @@ header p {
     <script>
         document.getElementById("copyright-year").textContent = new Date().getFullYear();
     </script>
+        
 
 </body>
 </html>
