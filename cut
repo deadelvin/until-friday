@@ -18,3 +18,9 @@
 
 
     <p><span style="font-size: 0.8rem;">small text goes here <a href="myspacesurvey.html" target="_blank">linked text</a>? Lol</span></p>
+
+
+    <div class="blog-post">
+    <h2 class="blog-title"><a href="post1.html">September 23rd, 2025</a></h2>
+    <p class="blog-blurb">just hold out till friday.</p>
+</div>
