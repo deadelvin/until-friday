@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Witchcraft Learning Journey">
+    <title>Witchcraft</title>
+    <style>
+        body {
+            font-family: 'Merriweather', serif;
+            background-color: #1e1b1d;
+            color: #dbc5b9;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* HEADER */
+        header {
+            background-color: #1a1a1a;
+            text-align: center;
+            padding: 1.5rem 1rem;
+            position: relative;
+            border-bottom: 2px solid #1be729;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+            color: #1be729;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            margin-top: 0;
+        }
+
+        /* NAVIGATION */
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #436243;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        nav a {
+            color: #dbc5b9;
+            padding: 1rem;
+            text-decoration: none;
+            transition: color 0.3s ease, border-bottom 0.3s ease;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #1be729;
+            border-bottom: 2px solid #f7d7c2;
+        }
+
+        /* MAIN CONTENT */
+        main {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* SECTION LAYOUT - FLEXBOX */
+        .section-container {
+            display: flex;
+            justify-content: center;
+            gap: 2rem; /* Space between side-by-side tiles */
+            flex-wrap: wrap;
+            margin-bottom: 2rem; /* Creates space between rows */
+        }
+
+        section {
+            flex: 1;
+            min-width: 300px;
+            max-width: 48%;
+            background-color: #436243;
+            padding: 2rem;
+            border-radius: 10px;
+            border: 2px solid #1be729;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* SECTION HEADINGS */
+        section h2 {
+            font-size: 2.5rem;
+            color: #1be729;
+            text-transform: uppercase;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        /* SECTION PARAGRAPHS */
+        section p {
+            font-size: 1.3rem;
+            color: #dbc5b9;
+            margin-bottom: 1.5rem;
+        }
+
+        /* BUTTONS */
+        section a {
+            display: inline-block;
+            color: #1be729;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 0.8rem 1.5rem;
+            background-color: #1a1a1a;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            text-align: center;
+        }
+        /* BUTTON CONTAINER */
+        .button-container {
+    display: flex;
+    flex-direction: column; /* Force buttons to stack vertically */
+    gap: 1rem; /* Adjust spacing between buttons */
+    align-items: center; /* Center buttons within the section */
+}
+
+
+
+        section a:hover {
+            background-color: #f7d7c2;
+            color: #302030;
+        }
+
+        /* SYMBOLS */
+        .symbol {
+            position: absolute;
+            font-size: 3rem;
+            color: rgba(242, 228, 185, 0.6);
+            animation: glow 5s infinite ease-in-out;
+        }
+
+        .symbol.left {
+            top: 40px;
+            left: 20px;
+        }
+
+        .symbol.right {
+            top: 40px;
+            right: 40px;
+        }
+
+        @keyframes glow {
+    0% {
+        text-shadow: 0 0 5px #f1ffec99, 0 0 20px rgba(255, 255, 255, 0.8);
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(-15deg); /* Tilts left first */
+    }
+    50% {
+        text-shadow: 0 0 10px rgb(197, 255, 203), 0 0 30px rgb(210, 255, 213);
+        transform: rotate(15deg); /* Tilts right */
+    }
+    75% {
+        transform: rotate(-15deg); /* Tilts left again */
+    }
+    100% {
+        transform: rotate(0deg); /* Returns to center */
+    }
+}
+
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 768px) {
+            .section-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            section {
+                max-width: 90%;
+            }
+        }
+
+/* Scroll Arrows */
+.scroll-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 5;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column; /* Stack text and arrow vertically */
+    align-items: center;
+    animation: pulse 1.5s infinite;
+}
+
+/* Left arrow */
+.scroll-arrow.left {
+    left: 25px; /* Adjust the distance from the left edge */
+}
+
+/* Right arrow */
+.scroll-arrow.right {
+    right: 25px; /* Adjust the distance from the right edge */
+}
+
+/* Scroll text styling */
+.scroll-text {
+    font-size: 1.2rem; /* Size of the "Scroll Down" text */
+    color: #1be729; /* Green color */
+    margin-bottom: 10px; /* Space between text and arrow (above the arrow) */
+    font-weight: bold; /* Optional for emphasis */
+    z-index: 10; /* Ensure the text stays above the arrow */
+}
+
+/* Arrow styling */
+.scroll-arrow::before {
+    content: "↓"; /* Downward pointing arrow */
+    font-size: 2rem;
+    color: #1be729;
+    display: block;
+}
+
+/* Animation for pulsing effect */
+@keyframes pulse {
+    0% {
+        transform: translateY(-50%) scale(1);
+    }
+    50% {
+        transform: translateY(-50%) scale(1.2);
+    }
+    100% {
+        transform: translateY(-50%) scale(1);
+    }
+}
+
+
+/* Animation for pulsing effect */
+@keyframes pulse {
+    0% {
+        transform: translateY(-50%) scale(1);
+    }
+    50% {
+        transform: translateY(-50%) scale(1.2);
+    }
+    100% {
+        transform: translateY(-50%) scale(1);
+    }
+}
+
+
+/* Animation for pulsing effect */
+@keyframes pulse {
+    0% {
+        transform: translateY(-50%) scale(1);
+    }
+    50% {
+        transform: translateY(-50%) scale(1.2);
+    }
+    100% {
+        transform: translateY(-50%) scale(1);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: translateY(-50%) scale(1);
+    }
+    50% {
+        transform: translateY(-50%) scale(1.2);
+    }
+    100% {
+        transform: translateY(-50%) scale(1);
+    }
+}
+
+
+  /* Social Media Icons */
+  .social {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    position: relative;
+    z-index: 5; /* Ensures social section is above other elements */
+}
+
+.social a {
+    color: #f7d7c2;
+    margin: 0 10px;
+    font-size: 2rem;
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.3s ease;
+    position: relative;
+}
+
+.social a:hover {
+    color: #04e000;
+    transform: scale(1.1);
+}
+
+.social a:hover::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    top: -35px; /* Ensures tooltip is further above */
+    left: 50%;
+    transform: translateX(-50%);
+    color: #1be729;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    background-color: #302030; /* Adds contrast for better readability */
+    padding: 5px 10px;
+    border-radius: 5px;
+    z-index: 10; /* Ensures tooltip is above other elements */
+    white-space: nowrap; /* Prevents text wrapping */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    animation: tooltipFade 0.5s ease-out;
+}
+        
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background-color: #436243;
+            border-top: 2px solid #1be729;
+        }
+
+        footer p {
+            color: #dbc5b9;
+            font-size: 1rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Witchcraft</h1>
+        <p>Learning Journey Portals</p>
+    </header>
+
+    <nav>
+
+        <a href="index.html">Home</a>
+        <a href="classes.html">Witchcraft: Classes</a>
+
+        <a href="contact.html">Contact</a>
+
+    </nav>
+
+    <main>
+        <div class="section-container">
+            <section>
+                <h2>WITCH 101</h2>
+                <p>Introduction to the History of Magic [European and EuroAmerican Focus].</p>               
+                 <p>Course delves into the origins and sociocultural context of magic, tracing European traditions from ancient civilizations to modern-day global practices. This course engages critically with traditions and the contexts in which they thrive.</p>               
+                 <div class="button-container">
+                <a href="WITCH101Syllabus.html">View Syllabus</a>
+                <a href="#">View Blog</a>
+                </div>
+                <div class="symbol left">📜</div>
+                <div class="symbol right"></div>
+            </section>
+
+                        <section>
+                <h2>WITCH 102</h2>
+                <p>Intro to English/Language Arts & (Witch)Crafts</p>
+                <p>Course delves into the realms of spellcraft and linguistic expression. Exploring foundational principles of spell work, from harnessing intent and symbolism to casting spells for manifestation, healing, and transformation. Focus on cultivating a poetic voice, drawing from mystical traditions and personal experiences to craft spells, incantations, and enchanted written works. Blend of technical techniques, creative exerises, and expression for empowerment.</p>
+                <div class="button-container">
+   <a href="#">View Syllabus</a>
+                <a href="WITCH102Blog.html">View Blog</a>                
+            </div>
+                <div class="symbol left">📖</div>
+                <div class="symbol right"></div>
+            </section>
+            
+
+                        <section>
+                <h2>WITCH 103</h2>
+                <p>Intro to (Witchy) Home Economics</p>
+                <p>Welcome to the enchanting world of herbology and potions. Nature, healing, magic, and culinary crafts. This course aims to foster a journey into green and kitchen witchcraft, discovering the magic and wisdom of plants and herbs. Cultivating a magic herb garden, crafting herbal remedies and teas. Hands-on activities. Holistic well-being. Cultivate a deeper relationshipw ith the natural world and embrace ancient wisdom.</p>
+                <div class="button-container">
+   <a href="#">View Syllabus</a>
+                <a href="#">View Blog</a>                </div>
+                <div class="symbol left">🌿</div>
+                <div class="symbol right"></div>
+            </section>
+
+
+
+
+        </div>
+    
+
+        </div>
+    </div>
+</section>
+         <div class="social">
+        <a href="https://bsky.app/profile/until-friday.bsky.social" target="_blank" data-tooltip="Bluesky">⛆</a>
+        <a href="https://www.tiktok.com/@until_friday" target="_blank" data-tooltip="tiktok">✘</a>
+        <a href="blank" target="_blank" data-tooltip="This Isn't Really a Link But I wanted Three Images Here That Looked Clickable Sorry">☻</a>
+    </div>
+
+    <footer>
+        <p>© <span id="copyright-year"></span> until-friday | All rights reserved. </p>
+    </footer>
+    
+    <script>
+        document.getElementById("copyright-year").textContent = new Date().getFullYear();
+    </script>
+
+</body>
+</html>

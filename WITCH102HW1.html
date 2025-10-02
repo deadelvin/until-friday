@@ -1,0 +1,287 @@
+<!-- post1.html -->
+<!-- journal-entry.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Journal Entry</title>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400&family=Special+Elite&display=swap" rel="stylesheet">
+  <style>
+    /* Base Styles */
+    body {
+      font-family: 'Merriweather', serif;
+      background-color: #101010;
+      color: #7fe886;
+      margin: 0;
+      padding: 2rem;
+      line-height: 1.6;
+      background-image: radial-gradient(circle at top left, #0a0a0a, #101010, #0f0f0f);
+    }
+
+    /* Journal Box */
+    .journal-container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: #1e1e1e;
+      border: 2px solid #1be729;
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: 0 0 25px rgba(27, 231, 41, 0.3);
+    }
+
+    .journal-title {
+      font-family: 'Special Elite', cursive;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      text-align: center;
+      color: #1be729;
+      text-shadow: 0px 0px 8px #000;
+    }
+
+    .journal-content {
+      font-size: 1.2rem;
+      color: #d8c3a5;
+      white-space: pre-line;
+    }
+
+    .journal-content p {
+  margin-top: 0.5rem;   /* or 0 if you want no extra gap */
+  margin-bottom: 0.5rem;
+  line-height: 1.6;     /* keep line spacing comfortable */
+}
+
+
+    .journal-subtitle {
+  font-size: 1.2rem;   /* smaller than title */
+  text-align: center;
+  color: #1be729;      /* same green as the title */
+  font-style: italic;  /* keeps it looking like a subtitle */
+  margin-top: -0.5rem; /* pull it closer to the title */
+  margin-bottom: 1.5rem;
+}
+
+.post-subtitle {
+  font-size: 1.3rem;        /* a bit bigger than body text */
+  text-align: left;         /* aligned with the body text */
+  color: #d8ffd8;           /* soft/light green */
+  margin: 1rem 0;           /* space above and below */
+  font-family: 'Merriweather', serif; /* keeps body style for contrast */
+}
+
+    /* Symbols */
+    .symbol {
+      position: absolute;
+      font-size: 2.5rem;
+      color: rgba(242, 228, 185, 0.6);
+      animation: glow 5s infinite ease-in-out;
+    }
+    .symbol.left { top: 30px; left: 30px; }
+    .symbol.right { top: 30px; right: 30px; }
+
+    @keyframes glow {
+      0% { text-shadow: 0 0 5px #f1ffec99, 0 0 15px #1be729; }
+      50% { text-shadow: 0 0 10px #c5ffcb, 0 0 30px #1be729; }
+      100% { text-shadow: 0 0 5px #f1ffec99, 0 0 15px #1be729; }
+    }
+
+    /* Back link */
+    .back-link {
+      display: block;
+      margin-top: 2rem;
+      text-align: center;
+      font-size: 1.2rem;
+      font-family: 'Special Elite', cursive;
+    }
+
+    .back-link a {
+      color: #1be729;
+      text-decoration: none;
+      border-bottom: 1px dashed #1be729;
+      transition: color 0.3s ease;
+    }
+
+    .back-link a:hover {
+      color: #7fe886;
+    }
+
+    /* Social Media Icons */
+    .social {
+      display: flex;
+      justify-content: center;
+      margin-top: 2rem;
+      gap: 15px;
+    }
+
+    .social a {
+      color: #1be729;
+      font-size: 1.8rem;
+      text-decoration: none;
+      transition: transform 0.3s ease, color 0.3s ease;
+    }
+
+    .social a:hover {
+      color: #7fe886;
+      transform: scale(1.2) rotate(-5deg);
+    }
+
+    ul {
+    list-style: none; /* Ensures no default bullets */
+    padding-left: 0; /* Removes default padding */
+}
+
+ul li {
+    color: #dbc5b9; /* Matches text color with other columns */
+    display: flex;
+    align-items: center; /* Aligns text and arrow symbol properly */
+}
+
+ul li::before {
+    content: "➵"; /* Custom arrow bullet */
+    color: #1be729; /* Keeps arrow green */
+    font-size: 1.5rem; /* Adjust size */
+    margin-right: 10px; /* Adds spacing between bullet and text */
+}
+
+.references {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid #1be729; /* optional divider */
+}
+
+.references-title {
+  font-size: 1.5rem;
+  color: #1be729; /* matches the title style */
+  text-align: left;
+  margin-bottom: 1rem;
+  font-family: 'Special Elite', cursive;
+}
+
+.reference-list p {
+  margin: 0.5rem 0;       /* tighter spacing between entries */
+  padding-left: 2rem;   /* indent whole block */
+  text-indent: -2.5rem;   /* pull first line back */
+}
+a {
+  color: #1be729;          /* your bright green */
+  text-decoration: none;   /* removes underline */
+}
+
+a:hover {
+  color: #7fe886;          /* softer green on hover */
+}
+
+.post-date {
+  font-size: 0.9rem;          /* smaller than subtitle */
+  color: #c8ffc8;             /* subtle light green */
+  text-align: center;          /* align under subtitle/title */
+  margin-top: -0.3rem;        /* pull it closer to subtitle */
+  margin-bottom: 1.5rem;      /* space before content */
+  font-style: italic;          /* optional emphasis */
+}
+
+
+  </style>
+</head>
+<body>
+
+  <!-- Emo symbols (placeholders) -->
+  <div class="symbol left">✦</div>
+  <div class="symbol right">☽◯☾</div>
+
+    <div class="back-link">
+    <a href="WITCH102Blog.html">← Back to All Entries</a>
+  </div>
+
+<div class="journal-container">
+  <h1 class="journal-title">On Language, the Written Word, and Spellcasting</h1>
+  <h2 class="journal-subtitle">by dead-elvyn, phd</h2>
+    <p class="post-date">October 1, 2025</p>
+
+  <div class="journal-content">
+    <h2 class="post-subtitle">Abstract</h2>
+    <p>There are many misconceptions about witches and what it is that we do. Magic is often pejoratively deemed to be when witches “think” we are making the (seemingly) impossible happen, which leads to many a witch being mocked for her alleged “belief” that she can, for example, fly on a broomstick or levitate objects. As a practitioner myself, I theorize in this piece on spellcasting as it is actually commonly used by the witch: as an articulation of manifestation. Witch’s spells are, often, a way of achieving what many call the law of attraction. From this foundation, I detail the ways power dynamics exist within the language of magic itself and in magical (and spiritual or religious) communities by considering common beliefs about the supposed power of secrecy, antiquity, and non-quotidian (i.e. non-everyday) language use, as well as matters of authority. Lastly, I look at the importance of the oral practice of spellcasting by connecting the written and spoken word via breath. </p>
+   
+    <h2 class="post-subtitle">Introduction</h2>
+<p>The witch casts spells. </p>
+<p>I should think this not <i>too</i> controversial a statement to make. </p>
+<p>And the spells are thought to be what causes the magics. </p>
+<p>But why? </p>
+<p>The association between language, words, breath, and spells has been thoroughly considered in many a field: anthropology, linguistics, philosophy, psychology, and so on. Spells can be considered to be what many refer to nowadays as manifestation, or what might be articulated as the law of attraction. A key component of this is the law of association, which is where the associations we make have magical energy. This magic of manifestation can be accessed through words. Words, when used with intent to create change in one’s life, might be called spells. In this article, I detail the basic theory of manifestation via spellcasting, how words function for manifestation, and how the written word or symbol provides a unique means of granting the spellcaster access to such power for creation. </p>
+
+    <h2 class="post-subtitle">Manifestation as Magic</h2>
+<p>According to Arthur Edward Waite, co-creator of the Rider-Waite tarot and, by his own confession, “a magist who does not practice magic; [being] a man of study and not a man of phenomena” (1897, 51), there are three occult sciences: Kabbalah (the Jewish science of thought), Hermeticism (“the search for the principle of life”) and Magic, which, claims Waite, is “universal magnetism” (48). What is popularly called the law of attraction either is this thing of “magnetism,” or at the very least falls within its proximity in theory and practice. </p>
+<p>But first, what is the law of attraction? In short, and perhaps crudely, it’s the idea that what you think, or for that matter speak, will manifest in your life. For example, Ariel Gatoga - a witch of 40+ years and respected teacher of magic - states that if someone were to be asked to write negative things, think negative things, or even listen to negative things about themselves (such as that they’re no good, everyone hates them, they’re going to die soon, they’ll never have enough money), that most people are going to be very averse to doing so (Gatoga 2019, 15:35-17:20). Gatoga makes the point that the reason for this aversion is that “it would feel wrong” because “intuitively, you know that thought is creative and you don’t want to see those kinds of results showing up in your life. Creative thought is the basic idea behind spellwork. A spell is the old fashioned way of working what, today, people call the Law of Attraction, affirmations, visualizations, [etc.]” (2019). </p>
+<p>In addition to language and speaking manifestations into your life via spells, spells can also take multimodal form, such as seen in visualization, hence the popular vision boards. Gatoga makes this point often, stating that storytelling, for example, allows the listener’s mind to visualize the story, which is a practice in visualization that is “removed” with popular media such as TV and movies (2024). He allows that TV and movies are not “bad,” but argues they can “atrophy” that “imaginative process” necessary for magic if they dominate one’s life over other forms of storytelling that require mental visualization (Gatoga 2024). In addition, the late Stanley Jeyaraja Tambiah, an Anthropologist of Tamil descent, wrote that language within magic for many cultures functions primarily on the law of association (1968, pp. 186, 188, 193, 194) and that language “enjoys the power to invoke images and comparisons, refer to time past and future and relate events which cannot be represented in action” (202). While my focus in this piece is on the written word, it should be kept in mind that words are oft associated with images, which falls within the attraction law. The main point here is that there is a connection between the written word and spellcasting. </p>
+<p>Consider that the written word is literally magic, if we understand “magic” to mean “manifest.” Reason being that transcribing language “gives a physical existence to words” (Tambiah 1968, 182), and physical manifestation from the non-physical (such as immaterial language) in the world has long been associated with magic and witchcraft. For example, Reginald Scot in The Discoverie of Witchcraft (originally published in 1584) reveals that during the inquisition witches were thought to be in cahoots with or influenced by “devils” which, as beings of the nonphysical, spiritual realm, “may at their pleasure become corporal [i.e. bodily, material, temporal] so that they could show themselves to witches” (ix). Manifestation in the world is magic. Witches make things happen in the world, and can do so through language. Technically, everyone is doing magic when they speak or write - they manifest what was in the immaterial mind. This is what Tambiah refers to as the “creative power of the word” (182). Witches know how to put this power to use. The relationship between creativeness and creation is striking, and there is power in creation. </p>
+
+    <h2 class="post-subtitle">Power Dynamics in Language and Magic/Ritual</h2>
+<p>To speak of such power, we must also consider power dynamics. Power dynamics cannot be evaded – they exist, plain and simple. One example of this is that which is commonly thought to imbue many a spell with its power: secrecy. Tambiah states that the two dominant views of magical language (at that time in academia, 1968) were that there are intelligible and nonintelligible spells, and it is within the unintelligible (secret) spells that major power exists for the magical practitioner. As such, the practitioner holds power through secrecy (or the illusion of secrecy) which the layperson in their community has not access to – that layperson must trust the medicine person/witch. Therefore, that witch holds power and authority over the affairs of the layperson. </p>
+<p>We also see power in language and words via the act of naming. Tambiah supports this by referencing Christian doctrine: Genesis 1:5, Genesis 2: 9-20, Isaiah 55:11, and John 1 (1968, 183). Respectively, these verses are: </p>
+        <ul>
+         <li>“God created the world by assigning names and God called the light Day, and the darkness he called Night”</li>
+        <li>“And out of the ground the Lord God formed every beast of the field, and every fowl of the air; and brought them unto the man to see what he would call them: and whatsoever the man called every living creature, that was the name thereof…’</li>
+         <li>“So shall my word be that goeth forth out of my mouth: it shall not return unto me void, but it shall accomplish that which I please, and it shall prosper in the thing whereto I sent it” </li>
+         </ul>
+<p>In John 1:1 we have, “In the beginning was the Word, and the Word was with God, and the Word was God.” We can also see the power of word in examples such as the “Vedic hymns [which] speculated on vac (the word) and asserted that the gods ruled the world through magical formulae; the Parsi religion states that in the battle between good and evil it was through the spoken word that chaos was transformed into cosmos; […] and the Greek doctrine of logos postulated that the soul or essence of things resided in their names” (Tambiah 1968, 182-183). This leads Tambiah to conclude that “Language gave man the sense of power over his environment [and that] [t]he belief that to know the name of a thing is to get a hold on it is thus empirically true” (186). If knowing a name is to ‘get a hold’ of a thing, or it might be said to possess, control, or own that thing, then there is also a connection here in the exercise of power by re-naming. </p>
+<p>With regard to power and language, there is also a common phenomenon wherein the practitioner feels that the language used in magic, ceremony, ritual, and spellwork must be different from their language of ordinary, everyday use for it to have spiritual power (Tambiah 180) (this idea is nuanced by Gatoga in some lessons, but remains dominant in much of society and the witchcraft community – people tend to like their spiritual practices to be markedly “different” from their mundane lives). Tambiah provides examples of religions wherein there is a tradition of a sacred language, such as: “Latin in the occidental Catholic Church, Hebrew for Jews, Vedic Sanskrit for Hindus and Arabic for Muslims” (180). Tambiah goes on to show, however, that this is also a matter of power, stating that “In Islam, Hinduism, Buddhism, and Judaism the view has been strictly held that in religious ceremonies the sacred words recited should be in the language of the authorized sacred texts”, however, “many reformist movements which attacked the extreme formalism and ritualism of the established [Catholic] church attempted to destroy the exclusiveness of the sacred language in an attempt to increase accessibility and understanding among the faithful” (181). Those who did so “also attacked the Latin Bible on the grounds that there were older and more genuine Greek versions.” As such, Tambiah argues, “it could be said that texts tend to acquire authority because they are ancient, but that <strong> <em>it is also authority that matters more than antiquity”</em> </strong>(181, emphases added). </p>
+<p>It is also within power dynamics that spells (by any other name) are categorized (i.e. taxonomized or related to other ways of knowing/being/doing). For example, consider: is a spell different than a prayer? </p>
+<p>Who cares, and who gets to say?  </p>
+
+    <h2 class="post-subtitle">Spells vs. Prayers</h2>
+<p>I quote here Krissie, a Wiccan who filmed the popular Krissie Speaks about Wicca (2007, 2:14-2:37) YouTube video: </p>
+
+<ul>
+<li>“Our rituals, our spells, our potions, our seances and everything like that, have to do with the spiritual bond that we have with nature and everything that surrounds nature […] the easiest way to describe our spells is they’re our version of prayer.”</li>
+</ul>
+<p>According to Tambiah, academics of the time period (and so it might be said that the broader elite at large which they represented – typically, the white colonial) “have operated with the concept of ‘magic’ as something different from ‘religion’; we have thought of ‘spell’ as acting mechanically and as being intrinsically associated with magic; we have opposed ‘spell’ to ‘prayer’ which was thought to connote a different kind of communication with the divine” but Tambiah notes how this approach seeks to preserve/present the indigenous, tribal, and nonChristian as “different” from the Western (176). Which is to say those persons are othered, and usually cast as lower on the (debunked) scale of human civilized evolution. Such persons were at the time of study therefore interesting or considered important to study in order to discern the evolutionary history of mankind. At the time, academics commonly differentiated between spells and prayers by creating a Venn Diagram of sorts. Spells were “uttered” to, for example, “remove the sickness”, they were quietly muttered (thus powerful by their secrecy) and used the “language of command” often “employ[ing] a series of metaphorical images”; whereas prayers were audible invocations to higher beings in order to make the spell work (178). Tambiah offers the consideration that there is far more overlap than is represented in such a dichotomy. </p>
+<p>I agree. Though I might note that in my own practice, I view “prayer” as giving thanks or simply conversing with the spirits, whereas I view spells as specific things I am manifesting, which does not always need to include spirits (though they are typically the ones to thank post-manifestation). There is therefore a difference in my own practice between the two, even as they overlap. In addition, I don’t usually write prayers down, but I write spells down often (spelling them out…). A similarity is that I typically speak both prayers and spells out loud, which is where breath comes in as part of magic, as an important facet of language, words, and thus spells. </p>
+
+    <h2 class="post-subtitle">Breath</h2>
+<p>Izutsu, a Japanese scholar of Islamic studies, comparative religion, and linguistics, details the sacredness with which breath is understood in many religious traditions, stating that “The belief in the sacredness of the breath provides in fact the theoretical ground on which all sorts of verbal superstitions can ultimately be based” (39). Although I object to the connotations of “superstition” here, the underlying point remains true: in many traditions, breath is sacred. Izutsu notes the importance of breathwork, for example, such as is used in meditation practices. Further, he states that “among many peoples, ‘breath’ is frequently used as synonymous with ‘soul,’ ‘spirit,’ and ‘life’: psykhē, pneuma in Greek, anima spiritus in Latin, ātman, prāņa in Sanskrit, duh in Russian, rûah, nepeš in Hebrew, and many others” (40). As such, breath “is the chief medium by which the supernormal power of magic is generated and carried to its objective”, as exemplified when magical practitioners speak closely to, into, or blow upon objects to imbue them with magic (39). </p>
+<p>Izutsu makes the point that “it is in the breath that the main virtue of all verbal magic is believed to reside. The word, so long as it is not actually pronounced, must of necessity remain slumbering and inactive; only when carried by the breath can it become efficacious” (39). I again object, this time to how the statement is presented as “fact” here. I am not convinced that language is slumbering/inactive until it is spoken in the context of magic. However, Izutsu’s idea is again important: language, immaterial, exists often with breath, as breath is a major way language manifests for many language users… and it can also exist in other ways in the context of magic, such as being signed or written. </p>
+<p>In closing his chapter on breath, Izutsu makes the point that breath and word are connected: “word and breath constantly stand in parallelism as the means of God’s creative work [in sacred texts such as the Bible and Koran]. In other words, there is hardly any distinction made between word and breath, the two being closely associated with each other in the consciousness…” (46).  Clearly, breath is an important part of magic. It has an association for many with one’s spirit, and it is one way to engage the act of creation/manifestation, as it is literally manifesting one’s internal thoughts into the world (how writing also does), and manifestation is magic – it is making things happen. As such, control of the breath – using the breath with purpose and intent – can foster control over one’s manifestations. </p>
+
+    <h2 class="post-subtitle">Conclusion</h2>
+<p>Alas, spellcasting has a unique relationship with words and language. The intuitive dislike of negative thoughts and speech many have can be understood as evidence for the law of attraction – people know that those negative things will come true, or affect them on some level. Do not psychiatrists call this negative self-talk? And the same can be said for positive thoughts. Moreover, there is a connection between the written word – a physical manifestation of immaterial thought/language – and the law of attraction, as writing is a type of manifestation in itself. Spells, then, when written, can have immense impact on the physical realm. This does not exclude “symbols” such as sigils. Written language itself is symbolic of sound, sign, or concept (welcome to the chat, Communication Studies). The written word provides the spellcaster the experience of seeing their magic manifest before them. It is manifesting the immaterial, that which does not yet exist until the witch makes it so. Soon to follow will it manifest in other ways in the witch’s life. </p>
+
+<div class="references">
+  <h2 class="references-title">References</h2>
+  <div class="reference-list">
+     <p>Gatoga, Ariel, d. (2024). <i>Lesson One: Basic Craft Concepts | A Witch's Primer Revisited.</i><a href="https://www.youtube.com/watch?v=5P_9xcFDIRw"> https://www.youtube.com/watch?v=5P_9xcFDIRw</a> </p>
+    <p>— (2022). <i>The Astonishing Magic of the Written Word - Witchy Tips with Ariel Gatoga.</i><a href="https://www.youtube.com/watch?v=szP7Jl8nb_w "> https://www.youtube.com/watch?v=szP7Jl8nb_w </a> </p>
+    <p>— (2019). <i>A Witch's Primer: Lesson 1 (Beginning Witchcraft).</i><a href="https://www.youtube.com/watch?v=bJ6FcPLtc1s"> https://www.youtube.com/watch?v=bJ6FcPLtc1s</a> </p>
+    <p>Izutsu, Toshihiko (2011). <i>Language and Magic</i>. Keio University Press, Inc.</p>
+    <p>krissispeaks, dir. (2007). <i>Krissie Speaks about Wicca</i>.<a href="https://www.youtube.com/watch?v=YMXuaqNLeSU"> https://www.youtube.com/watch?v=YMXuaqNLeSU</a></p>
+    <p>Scot, Reginald (1989). <i>The Discoverie of Witchcraft.</i>. Courier Corporation.</p>
+    <p>Tambiah, S. J. (1968). <i>The Magical Power of Words.</i>. Man 3(2):175-208. <a href="https://doi.org/10.2307/2798500"> https://doi.org/10.2307/2798500 </a></p>
+    <p>Waite, Arthur Edward (1897). <i>The Mysteries of Magic: A Digest of the Writings of Éliphas Lévi [Pseud.]. K. Paul, rench, Trübner.</i>.  <a href="https://www.loc.gov/resource/gdcmassbookdig.mysteriesofmagic00levi/?sp=11&r=-1.35,-0.021,3.699,1.888,0#"> https://www.loc.gov/resource/gdcmassbookdig.mysteriesofmagic00levi/?sp=11&r=-1.35,-0.021,3.699,1.888,0#</a></p>
+
+
+</div>
+</div>
+
+
+</div>
+</div>
+
+
+  <!-- Back to entries -->
+  <div class="back-link">
+    <a href="WITCH102Blog.html">← Back to All Entries</a>
+  </div>
+
+
+
+         <div class="social">
+        <a href="https://bsky.app/profile/until-friday.bsky.social" target="_blank" data-tooltip="Bluesky">⛆</a>
+        <a href="https://www.tiktok.com/@until_friday" target="_blank" data-tooltip="tiktok">✘</a>
+        <a href="blank" target="_blank" data-tooltip="This Isn't Really a Link But I wanted Three Images Here That Looked Clickable Sorry">☻</a>
+    </div>
+
+
+
+</body>
+</html>
+
+
