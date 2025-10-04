@@ -486,6 +486,48 @@ ul li::before {
     margin-right: 10px; /* Adds spacing between bullet and text */
 }
 
+/* Bio Share Section */
+.bio-share {
+    text-align: center;
+    margin-top: 1.5rem;
+}
+
+/* Title for the section */
+.bio-share .share-title {
+    font-family: 'Special Elite', cursive;
+    font-size: 1.2rem; /* smaller font to match bio */
+    color: #f5e8d0;
+    margin-bottom: 0.8rem; /* space between title and links */
+    text-shadow: 0 0 1px rgba(27, 231, 41, 0.4); /* subtle glow */
+    transition: text-shadow 0.3s ease, color 0.3s ease;
+}
+
+.bio-share .share-title:hover {
+    text-shadow: 0 0 2px rgba(27, 231, 41, 0.4);
+    color: #ffffff;
+}
+
+/* Container for the links */
+.bio-share .share-links {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 0.5rem;
+}
+
+/* Individual link styles */
+.bio-share .share-links a {
+    font-size: 1.8rem; /* match bio scale */
+    color: transparent; 
+    -webkit-text-stroke: 1px #1be729; /* outline stroke effect */
+    text-shadow: 0 0 1px rgba(27, 231, 41, 0.3); /* subtle glow */
+    transition: transform 0.3s ease, text-shadow 0.3s ease;
+}
+
+.bio-share .share-links a:hover {
+    transform: scale(1.15);
+    text-shadow: 0 0 2px rgba(27, 231, 41, 0.4); /* subtle hover glow */
+}
 
 
     </style>
@@ -513,10 +555,25 @@ ul li::before {
                 <div class="founder-story">
                     <h4 class="subheader">willkommen</h4>  
         <p>you can call me Elv. i'm self-studying witchcraft, and archiving that on the interwebs. i am in my 30s.</p>
-        <p>i'm karuk and live in tribal headquarters. additionally, I'm learning german. Both of my maternal great-grandfathers spoke german: Donauschwabe and Swabian. </p>
-        
+        <p>i'm learning German -- idk how much that'll come up here though</p>
     </div>
-                
+
+ <div class="bio-share">
+    <div class="share-title">share this blog:</div>
+    <div class="share-links">
+        <!-- Facebook -->
+        <a href="https://www.facebook.com/sharer/sharer.php?u=https://until-friday.netlify.app/"
+           target="_blank" title="Share on Facebook">ⓕ</a>
+        <!-- Bluesky -->
+  <a href="https://bsky.app/intent/compose?text=Check%20this%20out:%20https://until-friday.netlify.app/" target="_blank" title="Share on Bluesky">ཐི༏ཋྀ</a></a>
+        <!-- Reddit -->
+        <a href="https://www.reddit.com/submit?url=https://until-friday.netlify.app/&title=My%20Blog%20Post"
+           target="_blank" title="Share on Reddit">𖠌</a>
+    </div>
+</div>
+
+
+
             </div>
 
 
@@ -574,7 +631,7 @@ ul li::before {
          <div class="social">
         <a href="https://bsky.app/profile/until-friday.bsky.social" target="_blank" data-tooltip="Bluesky">⛆</a>
         <a href="https://www.tiktok.com/@until_friday" target="_blank" data-tooltip="tiktok">✘</a>
-        <a href="blank" target="_blank" data-tooltip="This Isn't Really a Link But I wanted Three Images Here That Looked Clickable Sorry">☻</a>
+        <a href="#" target="_blank" data-tooltip="This Isn't Really a Link But I wanted Three Images Here That Looked Clickable Sorry">☻</a>
     </div>
 
     <footer>
