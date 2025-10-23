@@ -1,0 +1,432 @@
+<!-- post.html -->
+<!-- journal-entry.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>witchy services </title>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400&family=Special+Elite&display=swap" rel="stylesheet">
+  <style>
+    /* Base Styles */
+    body {
+      font-family: 'Merriweather', serif;
+      background-color: #101010;
+      color: #7fe886;
+      margin: 0;
+      padding: 2rem;
+      line-height: 1.6;
+      background-image: radial-gradient(circle at top left, #0a0a0a, #101010, #0f0f0f);
+    }
+
+    /* Journal Box */
+    .journal-container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: #1e1e1e;
+      border: 2px solid #1be729;
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: 0 0 25px rgba(27, 231, 41, 0.3);
+    }
+
+    .journal-title {
+      font-family: 'Special Elite', cursive;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      text-align: center;
+      color: #1be729;
+      text-shadow: 0px 0px 8px #000;
+    }
+
+    .journal-content {
+      font-size: 1.2rem;
+      color: #d8c3a5;
+      white-space: pre-line;
+    }
+
+    .journal-content p {
+  margin-top: 0.5rem;   /* or 0 if you want no extra gap */
+  margin-bottom: 0.5rem;
+  line-height: 1.6;     /* keep line spacing comfortable */
+}
+
+    .journal-subtitle {
+  font-size: 1.2rem;   /* smaller than title */
+  text-align: center;
+  color: #1be729;      /* same green as the title */
+  font-style: italic;  /* keeps it looking like a subtitle */
+  margin-top: -0.5rem; /* pull it closer to the title */
+  margin-bottom: 1.5rem;
+}
+
+.post-subtitle {
+  font-size: 1.3rem;        /* a bit bigger than body text */
+  text-align: left;         /* aligned with the body text */
+  color: #d8ffd8;           /* soft/light green */
+  margin: 1rem 0;           /* space above and below */
+  font-family: 'Merriweather', serif; /* keeps body style for contrast */
+}
+
+    /* Symbols */
+    .symbol {
+      position: absolute;
+      font-size: 2.5rem;
+      color: rgba(242, 228, 185, 0.6);
+      animation: glow 5s infinite ease-in-out;
+    }
+    .symbol.left { top: 30px; left: 30px; }
+    .symbol.right { top: 30px; right: 30px; }
+
+    @keyframes glow {
+      0% { text-shadow: 0 0 5px #f1ffec99, 0 0 15px #1be729; }
+      50% { text-shadow: 0 0 10px #c5ffcb, 0 0 30px #1be729; }
+      100% { text-shadow: 0 0 5px #f1ffec99, 0 0 15px #1be729; }
+    }
+
+    /* Back link */
+    .back-link {
+      display: block;
+      margin-top: 2rem;
+      text-align: center;
+      font-size: 1.2rem;
+      font-family: 'Special Elite', cursive;
+    }
+
+    .back-link a {
+      color: #1be729;
+      text-decoration: none;
+      border-bottom: 1px dashed #1be729;
+      transition: color 0.3s ease;
+    }
+
+    .back-link a:hover {
+      color: #7fe886;
+    }
+
+    /* Social Media Icons */
+    .social {
+      display: flex;
+      justify-content: center;
+      margin-top: 2rem;
+      gap: 15px;
+    }
+
+    .social a {
+      color: #1be729;
+      font-size: 1.8rem;
+      text-decoration: none;
+      transition: transform 0.3s ease, color 0.3s ease;
+    }
+
+    .social a:hover {
+      color: #7fe886;
+      transform: scale(1.2) rotate(-5deg);
+    }
+
+    ul {
+    list-style: none; /* Ensures no default bullets */
+    padding-left: 0; /* Removes default padding */
+}
+
+ul li {
+    color: #dbc5b9; /* Matches text color with other columns */
+    display: flex;
+    align-items: center; /* Aligns text and arrow symbol properly */
+}
+
+ul li::before {
+    content: "➵"; /* Custom arrow bullet */
+    color: #1be729; /* Keeps arrow green */
+    font-size: 1.5rem; /* Adjust size */
+    margin-right: 10px; /* Adds spacing between bullet and text */
+}
+
+.references {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid #1be729; /* optional divider */
+}
+
+.references-title {
+  font-size: 1.5rem;
+  color: #1be729; /* matches the title style */
+  text-align: left;
+  margin-bottom: 1rem;
+  font-family: 'Special Elite', cursive;
+}
+
+.reference-list p {
+  margin: 0.5rem 0;       /* tighter spacing between entries */
+  padding-left: 2rem;   /* indent whole block */
+  text-indent: -2.5rem;   /* pull first line back */
+}
+a {
+  color: #1be729;          /* your bright green */
+  text-decoration: none;   /* removes underline */
+}
+
+a:hover {
+  color: #7fe886;          /* softer green on hover */
+}
+
+.post-date {
+  font-size: 0.9rem;          /* smaller than subtitle */
+  color: #c8ffc8;             /* subtle light green */
+  text-align: center;          /* align under subtitle/title */
+  margin-top: -0.3rem;        /* pull it closer to subtitle */
+  margin-bottom: 1.5rem;      /* space before content */
+  font-style: italic;          /* optional emphasis */
+}
+
+/* Cite Button */
+.cite-btn {
+  background-color: #1be729;
+  color: #101010;
+  border: none;
+  padding: 0.7rem 1.5rem;
+  border-radius: 8px;
+  font-family: 'Special Elite', cursive;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.cite-btn:hover {
+  background-color: #101010;
+  color: #1be729;
+  border: 1px solid #1be729;
+}
+
+/* Modal Overlay */
+.modal {
+  display: none; 
+  position: fixed; 
+  z-index: 999; 
+  padding-top: 100px; 
+  left: 0; 
+  top: 0; 
+  width: 100%; 
+  height: 100%;
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* Modal Content Box */
+.modal-content {
+  background-color: #1e1e1e;
+  margin: auto;
+  padding: 20px;
+  border: 2px solid #1be729;
+  width: 70%;
+  border-radius: 12px;
+  color: #d8c3a5;
+  font-family: 'Merriweather', serif;
+  box-shadow: 0 0 20px #1be729;
+}
+
+/* Close Button */
+.close {
+  color: #1be729;
+  float: right;
+  font-size: 2rem;
+  cursor: pointer;
+}
+.close:hover {
+  color: #ffffff;
+}
+
+/* Floating Share Bar */
+.share-bar {
+  position: fixed;
+  top: 50%;
+  left: 80px; /* adjust distance from edge */
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  z-index: 1000;
+}
+
+/* Title */
+.share-title {
+  font-family: 'Special Elite', cursive;
+  font-size: 1rem;
+  color: #1be729;
+  text-shadow: 0 0 6px #1be729, 0 0 12px #7fe886;
+  margin-bottom: 10px;
+}
+
+/* Placeholder Icons */
+.share-bar a {
+  font-size: 2rem;
+  color: transparent;               /* makes the shape hollow */
+  -webkit-text-stroke: 1px #1be729; /* neon outline */
+  text-decoration: none;
+  transition: transform 0.3s ease, -webkit-text-stroke 0.3s ease;
+  text-shadow: 0 0 6px rgba(27, 231, 41, 0.6);
+}
+
+.share-bar a:hover {
+  -webkit-text-stroke: 1px #7fe886; /* glow shift on hover */
+  transform: scale(1.3) rotate(-8deg);
+}
+
+.footnote {
+  position: relative;
+  cursor: help;
+  color: #1be729;
+  font-size: 0.8rem;
+}
+
+.footnote-text {
+  visibility: hidden;
+  background-color: #1e1e1e;
+  color: #f5e8d0;
+  text-align: left;
+  border-radius: 5px;
+  padding: 8px;
+  position: absolute;
+  z-index: 10;
+  bottom: 125%;
+  left: 0;
+  width: 250px;
+  box-shadow: 0 0 5px #1be729;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.footnote:hover .footnote-text {
+  visibility: visible;
+  opacity: 1;
+}
+
+.blog-image {
+  text-align: center;
+  margin: 2rem auto;
+}
+
+.blog-image img {
+  display: block;
+  width: 90%;              /* fills most of your green bordered box */
+  max-width: 720px;        /* caps it so it doesn't stretch too much */
+  margin: 0 auto;
+  border: 2px solid #1be729;
+  border-radius: 10px;
+  box-shadow: 0 0 12px rgba(27, 231, 41, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.blog-image img:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 22px rgba(27, 231, 41, 0.5);
+}
+
+.blog-image figcaption {
+  font-size: 0.9rem;
+  color: #d8c3a5;
+  margin-top: 0.5rem;
+  font-style: italic;
+}
+
+
+
+  </style>
+</head>
+<body>
+
+  <!-- Emo symbols (placeholders) -->
+  <div class="symbol left">🧹</div>
+  <div class="symbol right">🐈‍⬛</div>
+
+    <div class="back-link">
+    <a href="WITCH101Blog.html">← Back to All Entries</a>
+  </div>
+
+
+<div class="share-bar">
+  <div class="share-title">✦ Share This ✦</div>
+  <a id="fbShare" href="#" target="_blank" title="Share on Facebook">ⓕ</a>
+  <a id="bsShare" href="#" target="_blank" title="Share on Bluesky">ཐི༏ཋྀ</a>
+  <a id="rdShare" href="#" target="_blank" title="Share on Reddit">𖠌</a>
+</div>
+
+<script>
+  const pageUrl = encodeURIComponent(window.location.href);
+  const pageTitle = encodeURIComponent(document.title);
+
+  document.getElementById('fbShare').href = `https://www.facebook.com/sharer/sharer.php?u=${pageUrl}`;
+  document.getElementById('bsShare').href = `https://bsky.app/intent/compose?text=Check%20this%20out:%20${pageUrl}`;
+  document.getElementById('rdShare').href = `https://www.reddit.com/submit?url=${pageUrl}&title=${pageTitle}`;
+</script>
+
+
+<div class="journal-container">
+  <h1 class="journal-title">Week 2 Reflection: Witchy Services, Sex, and Sorcery </h1>
+  <h2 class="journal-subtitle">by dead-elvin</h2>
+    <p class="post-date">October 15, 2025</p>
+
+  <div class="journal-content">
+    <h2 class="post-subtitle">Services</h2>
+    <p>Keith Wrightson states that there were specialists of magic within ten miles of any village: Cunning Men and Wise Women. They had specialized knowledge and inherited power often considered to be passed in the blood. They provided several services, including: </p>
+
+    <ul class="sub-bullets"><li>Medical (healing w/ herbs and incantations) </ul>
+    <ul class="sub-bullets"><li>Diagnosed witchcraft and offered counter-witchcraft </ul>
+    <ul class="sub-bullets"><li>Recovery of lost or stolen goods </ul>
+    <ul class="sub-bullets"><li>Fortune telling </ul>
+
+<p>These magical services were not always demonized – they became so as witchcraft itself became named as such during the European witch hunts. An important feature of those accused of witchcraft in England is that they had – or were accused, at least, of having – pets. While Witchcraft is distinct from magic, witches were still known to practice magic. As such, I deduce that witches have a few key traits: they have close relationships with animals/nature, medicinal knowledge of herbs and accompanying prayers or spells, were something of therapists by providing protective magics to assuage village folks’ fears of witchcraft, and were psychic by way of finding lost items and fortune telling. </p>
+<p>However, more often, witches were identified by the stereotype popularized by Kramer (Institoris) and Sprenger in <i>Malleus Maleficarum</i> (which I’ll abbreviate henceforth as MM). This witch-hunting text, picked apart by skeptic Reginald Scot in <i>The Discoverie of Witchcraft</i>, is split into three parts: an overview of the arguments for witchcraft from a(n especially Dominican) theological worldview (Smith 2002, 88; Broedel 2018, 4), what witches do and how to counter their spells, and “recommended judicial proceedings against witches (Smith 2002, 88). </p>
+
+<h2 class="post-subtitle">Sex</h2>
+    <p>Mikki Brock notes that much of the original text highly sexualizes witchcraft. This is something Moira Smith conducts a deep dive into in “The Flying Phallus and the Laughing Inquisitor: Penis Theft in the ‘Malleus Maleficarum’” (2002). Smith states that the MM contains what is essentially south Germanic folklore – especially the phallic bird. In MM, Kramer shares an oft-cited story of witches who steal men’s penises and keep them (the penises) alive in nests. When a man comes to retrieve his “member,” he tries to take the biggest one for himself, and the witches tell him he can’t – that’s the village priest’s penis! </p>
+    <p>Both Brock and Smith reference this as points of historical interest. Central to Smith’s argument is that this story may have been Kramer’s way of inserting comedic relief into the text. Potentially important information for those reconstructing a craft here is that there is a long tradition in many cultures of association between birds and penises (Smith 2002, 98). Smith states that “The winged phallus was very common in ancient Rome; the image was incorporated into rings, pendants, and finger-rings that were commonly worn by boys as good luck charms. Like other phallic objects, these were probably designed to counter the evil eye” (99). </p>
+    <p>So, while you have the chicken being the cock and pecker (Smith 2002, 98), you also have the cat being the pussy (Brock 2024, 20:50). </p>
+
+<h2 class="post-subtitle">Sorcery</h2>
+    <p>Note… </p>
+    <p>I’ve somehow managed to enter the realm of the witch hunts, rather than what I intended this week, which was to get a sense of the foundations of ancient Europe’s actual magical practices – From other research, I have a general idea that such tenets might include, which I’ll note here for my own future reference: </p>
+
+    <li>Association/correspondence (Marett 1904, 136; Groover 2021, 10:25-10:35) </ul>
+    <li>Imagination (Waite & Lévi 1897, 67, 68, 71; Marett 1904, 142)</li>
+    <li>Mystery/Secrecy (Waite & Lévi 1897, 73) </li>
+    <li>The power of breath/words/symbolism [or what Lévi & Waite call “The Magic Chain,” as these things have power to influence others (and others’ will)] (Waite & Lévi 1897, 79; see also: Marett 1904, 150, and Brock 2024, 7:03; Broedel 2018, 6) </li>
+    <li>And balance (Waite & Lévi 1897, 75) </li>
+
+<p>I think there is also something to be said about the influence of spirits and ceremony and <i>intent</i> (which I suppose might fall under will). These all clearly overlap and interconnect. </p>
+
+<h2 class="post-subtitle">Conclude</h2>
+<p>But to wrap this all up – the MM cannot be understated as a historically significant piece. The handbook of witch hunters, it contains much of what was actually oral tradition regarding witches, though from the perspective of a man who clearly had something against women. While overly sexualizing women, Kramer also manages, as Smith puts it, to project “male castration fears” onto women (2002, 102). </p>
+
+
+<div class="references">
+  <h2 class="references-title">References</h2>
+  <div class="reference-list">
+     <p>Brock, Mikki, dir. 2024. Historian Answers Witchcraft Questions | Tech Support | WIRED. </i><a href="https://www.youtube.com/watch?v=NbPH9TcrRl4"> https://www.youtube.com/watch?v=NbPH9TcrRl4</a> </p>
+    <p>Broedel, Hans Peter. 2018. <i>The Malleus Maleficarum and the Construction of Witchcraft.</i> <a href="https://www.manchesterhive.com/display/9781526137814/9781526137814.xml"> https://www.manchesterhive.com/display/9781526137814/9781526137814.xml </a> </p>
+    <p>Groover, Myron, dir. 2021. “The Operation of All Wonderfull Things:” Magic and the Occult at McMaster University Library. 57:14. <a href="https://www.youtube.com/watch?v=TkjiFNOy9zM"> https://www.youtube.com/watch?v=TkjiFNOy9zM</a> </p>
+    <p>Kramer, Heinrich. 1486. <i>Malleus Maleficarum</i>. With Jacob Sprenger. .<a href="http://archive.org/details/MalleusMaleficarumHeinrichKramer"> http://archive.org/details/MalleusMaleficarumHeinrichKramer</a></p>
+    <p>Lévi, É, and Arthur Edward Waite. 1897. <i>The Mysteries of Magic: A Digest of the Writings of Éliphas Lévi [Pseud.].</i> K. Paul, Trench, Trübner.</p>
+    <p>Marett, R. R. 1904. “From Spell to Prayer.” <i>Folklore</i> 15 (2): 132–65.</p>
+    <p>Scot, Reginald. 1989. <i>The Discoverie of Witchcraft</i>. Courier Corporation.</p>
+    <p>Smith, Moira. 2002. “The Flying Phallus and the Laughing Inquisitor: Penis Theft in the ‘Malleus Maleficarum.’” <i>Journal of Folklore Research</i> 39 (1): 85–117.</p>
+    <p>Wrightson, Keith, dir. 2011. 14. Witchcraft and Magic. YaleCourses. 46:35. <a href="https://www.youtube.com/watch?v=1rHSu2oDZXE">https://www.youtube.com/watch?v=1rHSu2oDZXE</a></p>
+</div>
+
+</div>
+
+  <!-- Back to entries -->
+  <div class="back-link">
+    <a href="WITCH101Blog.html">← Back to All Entries</a>
+  </div>
+
+
+         <div class="social">
+        <a href="https://bsky.app/profile/until-friday.bsky.social" target="_blank" data-tooltip="Bluesky">⛆</a>
+        <a href="https://www.tiktok.com/@until_friday" target="_blank" data-tooltip="tiktok">✘</a>
+        <a href="blank" target="_blank" data-tooltip="This Isn't Really a Link But I wanted Three Images Here That Looked Clickable Sorry">☻</a>
+    </div>
+
+
+</body>
+</html>
+

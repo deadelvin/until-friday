@@ -1,0 +1,456 @@
+<!-- post.html -->
+<!-- journal-entry.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>about the witch </title>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400&family=Special+Elite&display=swap" rel="stylesheet">
+  <style>
+    /* Base Styles */
+    body {
+      font-family: 'Merriweather', serif;
+      background-color: #101010;
+      color: #7fe886;
+      margin: 0;
+      padding: 2rem;
+      line-height: 1.6;
+      background-image: radial-gradient(circle at top left, #0a0a0a, #101010, #0f0f0f);
+    }
+
+    /* Journal Box */
+    .journal-container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: #1e1e1e;
+      border: 2px solid #1be729;
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: 0 0 25px rgba(27, 231, 41, 0.3);
+    }
+
+    .journal-title {
+      font-family: 'Special Elite', cursive;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      text-align: center;
+      color: #1be729;
+      text-shadow: 0px 0px 8px #000;
+    }
+
+    .journal-content {
+      font-size: 1.2rem;
+      color: #d8c3a5;
+      white-space: pre-line;
+    }
+
+    .journal-content p {
+  margin-top: 0.5rem;   /* or 0 if you want no extra gap */
+  margin-bottom: 0.5rem;
+  line-height: 1.6;     /* keep line spacing comfortable */
+}
+
+    .journal-subtitle {
+  font-size: 1.2rem;   /* smaller than title */
+  text-align: center;
+  color: #1be729;      /* same green as the title */
+  font-style: italic;  /* keeps it looking like a subtitle */
+  margin-top: -0.5rem; /* pull it closer to the title */
+  margin-bottom: 1.5rem;
+}
+
+.post-subtitle {
+  font-size: 1.3rem;        /* a bit bigger than body text */
+  text-align: left;         /* aligned with the body text */
+  color: #d8ffd8;           /* soft/light green */
+  margin: 1rem 0;           /* space above and below */
+  font-family: 'Merriweather', serif; /* keeps body style for contrast */
+}
+
+    /* Symbols */
+    .symbol {
+      position: absolute;
+      font-size: 2.5rem;
+      color: rgba(242, 228, 185, 0.6);
+      animation: glow 5s infinite ease-in-out;
+    }
+    .symbol.left { top: 30px; left: 30px; }
+    .symbol.right { top: 30px; right: 30px; }
+
+    @keyframes glow {
+      0% { text-shadow: 0 0 5px #f1ffec99, 0 0 15px #1be729; }
+      50% { text-shadow: 0 0 10px #c5ffcb, 0 0 30px #1be729; }
+      100% { text-shadow: 0 0 5px #f1ffec99, 0 0 15px #1be729; }
+    }
+
+    /* Back link */
+    .back-link {
+      display: block;
+      margin-top: 2rem;
+      text-align: center;
+      font-size: 1.2rem;
+      font-family: 'Special Elite', cursive;
+    }
+
+    .back-link a {
+      color: #1be729;
+      text-decoration: none;
+      border-bottom: 1px dashed #1be729;
+      transition: color 0.3s ease;
+    }
+
+    .back-link a:hover {
+      color: #7fe886;
+    }
+
+    /* Social Media Icons */
+    .social {
+      display: flex;
+      justify-content: center;
+      margin-top: 2rem;
+      gap: 15px;
+    }
+
+    .social a {
+      color: #1be729;
+      font-size: 1.8rem;
+      text-decoration: none;
+      transition: transform 0.3s ease, color 0.3s ease;
+    }
+
+    .social a:hover {
+      color: #7fe886;
+      transform: scale(1.2) rotate(-5deg);
+    }
+
+    ul {
+    list-style: none; /* Ensures no default bullets */
+    padding-left: 0; /* Removes default padding */
+}
+
+ul li {
+    color: #dbc5b9; /* Matches text color with other columns */
+    display: flex;
+    align-items: center; /* Aligns text and arrow symbol properly */
+}
+
+ul li::before {
+    content: "➵"; /* Custom arrow bullet */
+    color: #1be729; /* Keeps arrow green */
+    font-size: 1.5rem; /* Adjust size */
+    margin-right: 10px; /* Adds spacing between bullet and text */
+}
+
+.references {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid #1be729; /* optional divider */
+}
+
+.references-title {
+  font-size: 1.5rem;
+  color: #1be729; /* matches the title style */
+  text-align: left;
+  margin-bottom: 1rem;
+  font-family: 'Special Elite', cursive;
+}
+
+.reference-list p {
+  margin: 0.5rem 0;       /* tighter spacing between entries */
+  padding-left: 2rem;   /* indent whole block */
+  text-indent: -2.5rem;   /* pull first line back */
+}
+a {
+  color: #1be729;          /* your bright green */
+  text-decoration: none;   /* removes underline */
+}
+
+a:hover {
+  color: #7fe886;          /* softer green on hover */
+}
+
+.post-date {
+  font-size: 0.9rem;          /* smaller than subtitle */
+  color: #c8ffc8;             /* subtle light green */
+  text-align: center;          /* align under subtitle/title */
+  margin-top: -0.3rem;        /* pull it closer to subtitle */
+  margin-bottom: 1.5rem;      /* space before content */
+  font-style: italic;          /* optional emphasis */
+}
+
+/* Cite Button */
+.cite-btn {
+  background-color: #1be729;
+  color: #101010;
+  border: none;
+  padding: 0.7rem 1.5rem;
+  border-radius: 8px;
+  font-family: 'Special Elite', cursive;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.cite-btn:hover {
+  background-color: #101010;
+  color: #1be729;
+  border: 1px solid #1be729;
+}
+
+/* Modal Overlay */
+.modal {
+  display: none; 
+  position: fixed; 
+  z-index: 999; 
+  padding-top: 100px; 
+  left: 0; 
+  top: 0; 
+  width: 100%; 
+  height: 100%;
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* Modal Content Box */
+.modal-content {
+  background-color: #1e1e1e;
+  margin: auto;
+  padding: 20px;
+  border: 2px solid #1be729;
+  width: 70%;
+  border-radius: 12px;
+  color: #d8c3a5;
+  font-family: 'Merriweather', serif;
+  box-shadow: 0 0 20px #1be729;
+}
+
+/* Close Button */
+.close {
+  color: #1be729;
+  float: right;
+  font-size: 2rem;
+  cursor: pointer;
+}
+.close:hover {
+  color: #ffffff;
+}
+
+/* Floating Share Bar */
+.share-bar {
+  position: fixed;
+  top: 50%;
+  left: 80px; /* adjust distance from edge */
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  z-index: 1000;
+}
+
+/* Title */
+.share-title {
+  font-family: 'Special Elite', cursive;
+  font-size: 1rem;
+  color: #1be729;
+  text-shadow: 0 0 6px #1be729, 0 0 12px #7fe886;
+  margin-bottom: 10px;
+}
+
+/* Placeholder Icons */
+.share-bar a {
+  font-size: 2rem;
+  color: transparent;               /* makes the shape hollow */
+  -webkit-text-stroke: 1px #1be729; /* neon outline */
+  text-decoration: none;
+  transition: transform 0.3s ease, -webkit-text-stroke 0.3s ease;
+  text-shadow: 0 0 6px rgba(27, 231, 41, 0.6);
+}
+
+.share-bar a:hover {
+  -webkit-text-stroke: 1px #7fe886; /* glow shift on hover */
+  transform: scale(1.3) rotate(-8deg);
+}
+
+.footnote {
+  position: relative;
+  cursor: help;
+  color: #1be729;
+  font-size: 0.8rem;
+}
+
+.footnote-text {
+  visibility: hidden;
+  background-color: #1e1e1e;
+  color: #f5e8d0;
+  text-align: left;
+  border-radius: 5px;
+  padding: 8px;
+  position: absolute;
+  z-index: 10;
+  bottom: 125%;
+  left: 0;
+  width: 250px;
+  box-shadow: 0 0 5px #1be729;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.footnote:hover .footnote-text {
+  visibility: visible;
+  opacity: 1;
+}
+
+.blog-image {
+  text-align: center;
+  margin: 2rem auto;
+}
+
+.blog-image img {
+  display: block;
+  width: 90%;              /* fills most of your green bordered box */
+  max-width: 720px;        /* caps it so it doesn't stretch too much */
+  margin: 0 auto;
+  border: 2px solid #1be729;
+  border-radius: 10px;
+  box-shadow: 0 0 12px rgba(27, 231, 41, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.blog-image img:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 22px rgba(27, 231, 41, 0.5);
+}
+
+.blog-image figcaption {
+  font-size: 0.9rem;
+  color: #d8c3a5;
+  margin-top: 0.5rem;
+  font-style: italic;
+}
+
+
+
+  </style>
+</head>
+<body>
+
+  <!-- Emo symbols (placeholders) -->
+  <div class="symbol left">🧹</div>
+  <div class="symbol right">🐈‍⬛</div>
+
+    <div class="back-link">
+    <a href="WITCH101Blog.html">← Back to All Entries</a>
+  </div>
+
+
+<div class="share-bar">
+  <div class="share-title">✦ Share This ✦</div>
+  <a id="fbShare" href="#" target="_blank" title="Share on Facebook">ⓕ</a>
+  <a id="bsShare" href="#" target="_blank" title="Share on Bluesky">ཐི༏ཋྀ</a>
+  <a id="rdShare" href="#" target="_blank" title="Share on Reddit">𖠌</a>
+</div>
+
+<script>
+  const pageUrl = encodeURIComponent(window.location.href);
+  const pageTitle = encodeURIComponent(document.title);
+
+  document.getElementById('fbShare').href = `https://www.facebook.com/sharer/sharer.php?u=${pageUrl}`;
+  document.getElementById('bsShare').href = `https://bsky.app/intent/compose?text=Check%20this%20out:%20${pageUrl}`;
+  document.getElementById('rdShare').href = `https://www.reddit.com/submit?url=${pageUrl}&title=${pageTitle}`;
+</script>
+
+
+<div class="journal-container">
+  <h1 class="journal-title">About Witches</h1>
+  <h2 class="journal-subtitle">by dead-elvin</h2>
+    <p class="post-date">October 6, 2025</p>
+
+  <div class="journal-content">
+    <h2 class="post-subtitle">Introduction</h2>
+<p> This is a creative reflective work on some of Reginald Scot’s The Discoverie of Witchcraft, 1584. I have only thus far read through Ch. XV of the 7th book. I will make other posts when I’m able to get another reasonable chunk of the text read. This post contains topics that drew my interest as a contemporary witch. I share: what a witch’s traits were expected to be (physically or temperamentally), what a witch was thought to accomplish, some of the ways sexuality emerges in the conversation, and the connection between witchcraft and shapeshifting.  </p>
+
+    <h2 class="post-subtitle"> How the witch looketh</h2>
+<figure class="blog-image">
+  <img src="witch.png" alt="oct-cat">
+  <figcaption>[image: a witch in purple robes sitting on a broomstick, standing on a cross, holding a frog. On the broom with her is a pile of eggs, some have fallen and are cracked. There is also a cat on the broomstick. Stars and Cresent Moon in sky. ].</figcaption>
+</figure> 
+
+<p>I have done my best, having no formal training in the Arts, to illustrate that image appearing above, in which I’ve painstakingly incorporated each element of her (the witch’s) attributes:</p>
+
+<p>The witch is of faded color and rotted flesh (xxxiii); she is “old, lame” bleary-eyed, pale, fowl, full of wrinkles, poor, sullen, lean, “deformed”, melancholy (6); toothless, impotent, “unweldie,” (11) and believed to have marks under her arms, hair, lip, or in her butt/privates (21). She keeps devils in the shapes of toads and cats, such as pets (or what the contemporary witch might call her familiar) (8). </p>
+
+<p>This is the witch of Scot’s time. And I should think it evidence of ageism, sexism, ableism, classism, and the like. There may be something against toads and cats, as well – perhaps a hierarchal view of the animal kingdom. And I recall an analysis of cats ridding homes of mice, being a favored pet of old women, and wonder the connection, if any, to the “old cat lady” archetype today. </p>
+
+<figure class="blog-image">
+  <img src="Oct_Familiar.jpeg" alt="oct-cat">
+  <figcaption>[image: a black cat on a bookshelf looking out a window].</figcaption>
+</figure>
+
+<p>I shall not tell my sweet cat (pictured above) that, being a witch’s pet, he is a devil in disguise, for fear I’ll hurt his feelings. </p>
+
+    <h2 class="post-subtitle"> How the witch behaveth</h2>
+<p>Friends, there is a difference between a witch and a poisoner, or venificae, which in Hebrew is Chasaph; the latter is what Exodus 22 is actually referring to in the translation “thou shalt not suffer a witch [poisoner/venificae/chasaph] to live” (90). Such a poisoner is one who mixes malevolent herbs with harmful intent; it being pure science. </p>
+<p>Witches, however, destroy their neighbors by way of images; construct crowns, swords, and the like; pull down Christ’s Cross, and declare where things lost or stolen may be found (xxxii). The witch “chase[s] away one devil by means of another” (xxxiii) and “brin[gs] a wished-for sweetheart to return the love of the weeker, or [cure] ailments simple or grievous” (xxxiv). A witch, by her proximity to the devil during encounters accomplished by praying his aid, will stink of brimstone (xxxv; ix). She becomes a succubus, fraternizing with incubi and raising spirits out of the grave (8). She tears snakes into pieces with just her words (8). </p>
+<p> Fellow countrymen I warn thee: the witch not only flies through the air, but, through her bargains with the devil, can transfer corn or grass from one field to an-other; she harms the children and cattle with words and rhyming charms; and bewitches butter, cheese, and ale such as that it will not come “no matter how long you churn” (xxii, 8). Take care, for the witch is disguised as an uneducated beggar of poverty and old age, yet “can transforme themselves and others into apes, owls, asses, dogs, cats” (xxiii, emphasis added). They will even devour children of their own kind, and raise hail and hurtful weather, cause infertility and miscarriage, alter the minds of judges, and kill with a simple look (8). Even she can send needles into the livers of her enemies, dry up springs, turn the course of running water, change day and night one into the other, and become invisible (8). </p>
+
+<p> Her transportation is a precise art: she need only recite Matthew 4:5-10, in which the devil puts Christ “on the pinnacle of the temple” (82); she can sail in an egg shell, cockle, or muscle shell; go in and out of “awgerr holes” (8) enter homes “through chinks and little holes” (52) and, most commonly, fly in the air by anointed staff or beast in the night (even with the Pagan’s Diana or Herodias) whereunto she passes over many countries and nations (52) and gathers in premeditated (31) assembly with others of her kind to “pull down the moon and stars” (8). There they dance with devils: “the witches never faile to danse; and in their danse they sing these words; Har har, divell divell, danse here, danse here, plaie here, plaie here, Sabbath, sabbath. And while they sing and danse, everie one hath a broome in hir hand, and holdeth it up aloft” (33). Accomplished shapeshifters, witches take the form of donkeys, wolves, ferrets, cows, apes, horses, and dogs (8). More on this later. She can even make a dog speak (18). If they fail to attend the witch’s sabbath, “the divell commeth and whippeth them with an iron rod; so as the print of his lashes remaine upon their bodies for ever” (72). </p>
+
+<p> Alas, the witch will be known in part by how she behaves: she will tread upon the Cross, spit during elevation, fast on Sunday but not Friday, and keep the devil’s commandments (31). </p>
+
+<p>The punishment for such is death; though on first offense, perhaps imprisonment or forfeit of goods or cattle (xxxii); perhaps hanging, exorcism, or burning (xxxiv); perhaps forcible confession (xxxix); and she shall be bound and tortured until such confession occurs (17/18). </p>
+
+<p>Whether ye believe the witch hath power of her own, or whether ye believe the devil works his charms through her (ix), ‘tis all the same. </p>
+
+
+    <h2 class="post-subtitle"> On the witch’s sexuality</h2>
+<p> Beware: she can come after your member.  <sup><a href="#fn1" id="ref1">1</a></sup> These “old witches are sworn to procure as manie yoong virgins for Incubus as they can” (60). <sup><a href="#fn1" id="ref1">2</a></sup> Witches engage in sex with incubi willingly, an offense confessed by forty-eight witches who were burned in a place called Ravenspurge (59). Additionally, they can control a man’s sexuality, causing him numbness thereupon. I cite to you a case of a priest who claims to be bewitched because he could only have sex with one woman (61). This priest tried to flee to another country, but was brought back night after night, flying through the air, to that same woman. Another case documents a priest complaining to physician and poet Jason Pratensis – this priest was bothered because he’d come to look ghostly as of late, “consisting of skinne and bone” (66). When Pratensis inquired what was the matter, the priest said that every night, a woman came and lay heavy upon his chest, so that he could not breathe, cry, or move his arms to get her off. Pratensis informed the priest that this was a disease called an Incubus, which would result in “phantasie and vaine imagination” (66). The priest went to a “cunning witch: and she willed me, that the next morning, about the dawning of the daie, I should pisse, and immediatlie should cover the pispot, or stop it with my right netherstocke, and before night the witch should come to visit me.” Her prophecy came true: “For a witch came to my house, and complained of a greefe in hir bladder, and that she could not pisse” (67). </p>
+
+<p>And I warn even of another case whereby a young man was having sex with a “wench” in town and suddenly lost feeling in his genitals. He was told by another witch to go to the woman he suspected of bewitching him and to ask her help. He went to her (the one he suspected) and strangled her when she initially refused to help, saying “restore me my/ toole, or thou shalt die for it” (61). She said to let her go and she would help him, so he started removing his pants and she reached down into them and touched his privates, saying he could have his “desire” back. He felt in that instant that he no longer had problems with his genitals. <sup><a href="#fn1" id="ref1">3</a></sup> </p>
+
+<p> Let her not bed you! </p>
+
+    <h2 class="post-subtitle"> Shapeshifting </h2>
+<p>The witch is a shapeshifter, and chiefly a Lycanthrope. Scot notes that Bodin, whose works are central to these witch hunts, says that it is natural for a girl to become a boy, any female may be turned into a male <sup><a href="#fn1" id="ref1">4</a></sup>, but it is unnatural for humans to become wolves, though it is a real phenomena, attained by means of ointment (72). One example is that of a man called Peter: shot by arrows while in wolf form, the archer cut the wolf’s feet off, “and in a moment he became a man without hands or feete” (72). Lycanthrope is, according to the skeptical Scot, “a disease proceeding partlie from melancholie, whereby manie suppose themselves to be woolves,” and that this was what the “ancient physicians” called Lupina melancholia or Lupina insania (81). </p>
+
+<p> It is at the witch’s sabbaths that they are all transformed into wolves: “The capteine witch leadeth the waie through a/ great poole of water: manie millians of witches swim after. They are no sooner passed through that water, but they are all transformed into woolves, and flie upon and devoure both men, women, cattel &c. After twelve daies they returne through the same water, and so receive humane shape againe” (72). </p>
+
+<p>She also shifts others into forms, such as into asses (donkeys). I tell you the tale of a young Englishman, a sailor, who went to a woman’s house away from the city, near the seaside, to see if she could sell him any eggs. She wanted him to stay there with her, and thought the only way to do so would be to destroy him, and so she told him to wait while she fetched some eggs. Only she was gone a very long time, and he called to her to make haste, lest his shipmates leave him behind as the tide “would be spent.” She took a while longer, and brought him a few eggs, telling him that if the ship left without him, to return to her. And he went back to his ship; only before he arrived there he ate some eggs, and when he got there none of his shipmates recognized him – treating him as if he were a donkey. The ship left without him, and he remembered what the witch said, and he returned to her, and served her for three years. All but other witches saw him as an ass; but witches knew he was a man (75). </p>
+
+<p>At the three year mark he was with the witch out in town, and stayed behind her a bit, finding himself near a churchyard, he knelt in prayer, and the witch came back to find him and beat him to follow her again. Merchants saw this, and accused her of witchcraft, and so she was brought forth before a judge, who examined her and made her confess, and she promised to “restore him to his old/ shape”, which she did (76). </p>
+
+    <h2 class="post-subtitle"> Conclusion</h2>
+<p>And so my final warning: you will recognize a witch by her ugly nature, her sad disposition, her ability to fly and her fondness of gathering with others of her kind; she can cause many a misfortune – from livestock to impotence. And I confirm this is all true. </p>
+
+
+<ol>
+  <li id="fn1">
+Scot calls out the contradiction that “either she is old and barren, or yoong and pregnant” (60)    <a href="#ref1"> ↩</a>
+
+<li id="fn1">The witch’s sexuality was of much interest to “witchmoongers” of the time; Chiefly, they use birth control (blasphemous!) by “stop[ping] the passage of the mans seed” or harming his reproductive bits with images and herbs (61).  <a href="#ref1"> ↩</a>
+
+<li id="fn1">Wives who attempted to heal their husband’s ED, even by means of images, appear not to’ve been accused of witchcraft. For example, one Katharine Loe, “having a husband not so readily disposed that waie as she wished him to be, made a waxen image to the likeness of hir husbands bewitched member, and offered it up at S. Anthonies altar, so as, through the holinesse of the masse it might be sanctified, to be more courageous, and of better disposition and abilitie” (65). Might it be said that magics are OK when they are in the service of healing men’s sexual parts? It is also true, however, that if the witchcraft which caused the ED were “perpetuall”, then the wife could get a divorce (65). <a href="#ref1"> ↩</a>
+
+<li id="fn1">Note: nowadays I am inclined to find joy in this pro-transgender sounding phenomena, but it’s clearly referring to a belief at the time in a natural sex change or intersex situation<a href="#ref1"> ↩</a>
+
+  </li>
+</ol>
+
+
+</div>
+
+  <!-- Back to entries -->
+  <div class="back-link">
+    <a href="WITCH101Blog.html">← Back to All Entries</a>
+  </div>
+
+
+         <div class="social">
+        <a href="https://bsky.app/profile/until-friday.bsky.social" target="_blank" data-tooltip="Bluesky">⛆</a>
+        <a href="https://www.tiktok.com/@until_friday" target="_blank" data-tooltip="tiktok">✘</a>
+        <a href="blank" target="_blank" data-tooltip="This Isn't Really a Link But I wanted Three Images Here That Looked Clickable Sorry">☻</a>
+    </div>
+
+
+</body>
+</html>
+

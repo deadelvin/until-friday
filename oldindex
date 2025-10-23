@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Witchcraft Store & Community Center - Classes, Research, and Gatherings">
+    <title>until-friday, Co., Occult Research</title>
+    <style>
+        body {
+            font-family: 'Merriweather', serif;
+            background-color: #1e1b1d;
+            color: #dbc5b9;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Header Section */
+        header {
+    background-color: #436243;
+    color: #1be729;
+    text-align: center;
+    padding: 3rem 1rem;
+    position: relative;
+    background-image: url('https://example.com/your-banner-image.jpg');
+    background-size: cover;
+    background-position: center;
+    backdrop-filter: blur(10px); /* Apply the blur effect here */
+}
+
+/* Updated Header Section */
+header {
+    background-color: #436243;
+    color: #1be729;
+    text-align: center;
+    padding: 3rem 10rem;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .header-image {
+    width: 100px; /* Adjust size as needed */
+    height: auto;
+    margin: 0 1rem; /* Small margin for spacing */
+}
+
+header .header-title {
+    flex-grow: 1;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 3.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    margin: 0;
+}
+
+header p {
+    font-size: 1.5rem;
+    font-style: italic;
+    margin-top: 0.5rem;
+    color: #f0e0cf;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+
+        /* Navigation Bar */
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #1a1a1a;
+            border-bottom: 2px solid #1be729;
+            padding: 1rem 0;
+        }
+
+        nav a {
+            color: #1be729;
+            padding: 1rem;
+            text-decoration: none;
+            transition: color 0.3s ease, border-bottom 0.3s ease;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #f7d7c2;
+            border-bottom: 2px solid #f7d7c2;
+        }
+
+        /* Main Content Section */
+        main {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Services, Community, and Merchandise Sections */
+        .services,
+        .community,
+        .merchandise {
+            background-color: #436243;
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 10px;
+            border: 2px solid #1be729;
+            position: relative;
+            text-align: center;
+        }
+
+        .services::before,
+        .community::before,
+        .merchandise::before {
+            content: '⛓️‍💥🧠⛓️‍💥';
+            color: #f7d7c2;
+            font-size: 3rem;
+            position: absolute;
+            top: -30px;
+            left: 45%;
+            transform: translateX(-50%);
+            animation: sparkle 1.5s infinite;
+        }
+
+        .services h2,
+        .community h2,
+        .merchandise h2 {
+            font-size: 2.5rem;
+            color: #1be729;
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 2px;
+            position: relative;
+        }
+
+        .services p,
+        .community p,
+        .merchandise p {
+            font-size: 1.3rem;
+            color: #1be729;
+            margin-top: 10px;
+        }
+
+        .services a,
+        .community a,
+        .merchandise a {
+            color: #dbc5b9;
+            font-weight: bold;
+            text-decoration: none;
+            padding: 10px 20px;
+            background-color: #1be729;
+            border-radius: 5px;
+            margin-top: 20px;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+        }
+
+        .services a:hover,
+        .community a:hover,
+        .merchandise a:hover {
+            background-color: #f7d7c2;
+            color: #302030;
+        }
+
+           /* Social Media Icons */
+           .social {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    position: relative;
+    z-index: 5; /* Ensures social section is above other elements */
+}
+
+.social a {
+    color: #f7d7c2;
+    margin: 0 10px;
+    font-size: 2rem;
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.3s ease;
+    position: relative;
+}
+
+.social a:hover {
+    color: #00ff0d;
+    transform: scale(1.1);
+}
+
+.social a:hover::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    top: -35px; /* Ensures tooltip is further above */
+    left: 50%;
+    transform: translateX(-50%);
+    color: #1be729;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    background-color: #302030; /* Adds contrast for better readability */
+    padding: 5px 10px;
+    border-radius: 5px;
+    z-index: 10; /* Ensures tooltip is above other elements */
+    white-space: nowrap; /* Prevents text wrapping */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    animation: tooltipFade 0.5s ease-out;
+}
+
+
+        /* Footer Section */
+        footer {
+            background-color: #1be729;
+            color: #000000;
+            text-align: center;
+            padding: 1rem;
+            border-top: 2px solid #1be729;
+            font-size: 1rem;
+            position: relative;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        /* Animations */
+        @keyframes sparkle {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.2); opacity: 0.7; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        /* Occult Borders */
+        .services::after,
+        .community::after,
+        .merchandise::after {
+            content: '';
+            color: #1be729;
+            font-size: 3rem;
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: sparkle 1.5s infinite;
+        }
+
+        /* Mobile View */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5rem;
+            }
+
+            header p {
+                font-size: 1.2rem;
+            }
+
+            nav {
+                flex-direction: column;
+            }
+
+            nav a {
+                padding: 0.8rem;
+            }
+
+            .services, .community, .merchandise {
+                padding: 1.5rem;
+                margin: 1.5rem 0;
+            }
+
+            .services h2, .community h2, .merchandise h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-title">
+            <h1>until-friday</h1>
+            <p>dead-elvin</p>
+        </div>
+    </header>
+    
+    
+    <nav>
+        <a href="about.html">Home</a>
+        <a href="blog.html">Dear Void (21+)</a>
+    </nav>
+
+
+
+    <main>
+       <section class="services">
+        <h2>About</h2>
+        <p> vibe here is adderall and energy drinks</p>
+        <p> every therapist i've had has ditched me and i get it b/c the mental health service industry is overworked but now i honestly have nothing to turn to but the void so pls just let me vent here because i'm a Millennial who doesn't know better and go away if it's too negative for you.</p>
+        <p> disclaimer - i am not a risk or suic*dal.</p> 
+
+
+            <div class="social">
+        <a href="https://bsky.app/profile/until-friday.bsky.social" target="_blank" data-tooltip="Bluesky">⛆</a>
+        <a href="https://www.tiktok.com/@until_friday" target="_blank" data-tooltip="tiktok">✘</a>
+        <a href="blank" target="_blank" data-tooltip="This Isn't Really a Link But I wanted Three Images Here That Looked Clickable Sorry">☻</a>
+    </div>
+
+    </main>
+
+    <footer>
+        <p>© <span id="copyright-year"></span> until-friday | All rights reserved. </p>
+    </footer>
+    
+    <script>
+        document.getElementById("copyright-year").textContent = new Date().getFullYear();
+    </script>
+
+</body>
+</html>

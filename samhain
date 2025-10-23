@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Celebrate Samhain - The Mystical Festival of Tertiary Occult">
+    <title>Samhain Festival - Tertiary Occult</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Raleway:wght@300;700&display=swap');
+
+        /* General Styles */
+        body {
+            font-family: 'Raleway', sans-serif;
+            background-color: #1a1a1a;
+            color: #f7d7c2;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        /* Header Section */
+        header {
+            background-color: #000;
+            background-image: url('https://www.transparenttextures.com/patterns/dark-mosaic.png');
+            text-align: center;
+            padding: 4rem 1rem;
+            color: #f89d1c;
+            position: relative;
+            border-bottom: 5px solid #f89d1c;
+        }
+
+        header h1 {
+            font-family: 'UnifrakturMaguntia', cursive;
+            font-size: 4rem;
+            letter-spacing: 5px;
+            position: relative;
+            color: #ff6700;
+        }
+
+        header h1::before {
+            content: '☾';
+            position: absolute;
+            left: -60px;
+            font-size: 3rem;
+            color: #ffd700;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        header h1::after {
+            content: '☽';
+            position: absolute;
+            right: -60px;
+            font-size: 3rem;
+            color: #ffd700;
+            animation: float 3s ease-in-out infinite reverse;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            margin-top: 1rem;
+            color: #ffd700;
+        }
+
+        header .symbols {
+            margin-top: 2rem;
+            font-size: 2rem;
+            animation: flicker 2s infinite alternate;
+            color: #ff6700;
+        }
+
+        .symbols span {
+            margin: 0 15px;
+        }
+
+        /* Navigation Bar */
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #111;
+            padding: 1rem 0;
+            border-bottom: 3px solid #f89d1c;
+        }
+
+        nav a {
+            color: #f89d1c;
+            text-decoration: none;
+            margin: 0 1.5rem;
+            font-weight: bold;
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #ffd700;
+        }
+
+        /* Main Section */
+        main {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            color: #f89d1c;
+        }
+
+        section {
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background-color: #302030;
+            border: 2px solid #ff6700;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        section h2 {
+            font-family: 'UnifrakturMaguntia', cursive;
+            font-size: 2.5rem;
+            color: #ffd700;
+        }
+
+        section p {
+            font-size: 1.2rem;
+            margin: 1.5rem 0;
+            color: #f7d7c2;
+        }
+
+        .festival-imagery {
+            margin: 3rem 0;
+            padding: 2rem;
+            border: 3px dashed #ff6700;
+            border-radius: 10px;
+            text-align: center;
+            color: #ff6700;
+        }
+
+        .festival-imagery h2 {
+            color: #ffd700;
+        }
+
+        .candles {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .candles span {
+            font-size: 3rem;
+            color: #ffd700;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.9);
+            animation: flicker 1.5s infinite alternate;
+        }
+
+        /* Footer Section */
+        footer {
+            background-color: #111;
+            text-align: center;
+            padding: 1rem;
+            color: #ffd700;
+            border-top: 2px solid #ff6700;
+        }
+
+        /* Animations */
+        @keyframes flicker {
+            0%, 100% { opacity: 1; text-shadow: 0 0 15px rgba(255, 215, 0, 1); }
+            50% { opacity: 0.8; text-shadow: 0 0 5px rgba(255, 215, 0, 0.7); }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0); }
+        }
+.blog-image {
+  text-align: center;
+  margin: 2rem auto;
+}
+
+.blog-image img {
+  max-width: 100%;
+  border: 2px solid #ff6700;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(231, 132, 27, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.blog-image img:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 25px rgba(244, 141, 6, 0.5);
+}
+
+.blog-image figcaption {
+  font-size: 0.9rem;
+  color: #d8c3a5;
+  margin-top: 0.5rem;
+  font-style: italic;
+}
+
+.blog-image img {
+  width: 40%;
+  max-width: 400px;
+  border: 2px solid #ff6700;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(231, 136, 27, 0.25);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.image-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.blog-image {
+  flex: 1 1 calc(33.333% - 20px);
+  max-width: 350px;
+  text-align: center;
+}
+
+.blog-image img {
+  width: 100%;
+  height: auto;
+  border: 2px solid #ff6700;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(231, 126, 27, 0.25);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.blog-image img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(231, 156, 27, 0.5);
+}
+
+.blog-image figcaption {
+  font-size: 0.9rem;
+  color: #d8c3a5;
+  margin-top: 0.5rem;
+  font-style: italic;
+}
+
+/* Responsive adjustment for smaller screens */
+@media (max-width: 800px) {
+  .blog-image {
+    flex: 1 1 calc(50% - 20px);
+  }
+}
+
+@media (max-width: 500px) {
+  .blog-image {
+    flex: 1 1 100%;
+  }
+}
+
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Samhain</h1>
+        <p>How to celebrate!</p>
+        <div class="symbols">
+            <span>🎃</span>
+            <span>☠</span>
+            <span>🌕</span>
+            <span>🦇</span>
+        </div>
+    </header>
+
+    <nav>
+
+        <a href="index.html">Home</a>
+        <a href="classes.html">Witchcraft Journey</a>
+
+        <a href="contact.html">Contact</a>
+
+    </nav>
+
+    <main>
+        <section>
+        
+            <p>Mark the end of the harvest and honor the spirits of your ancestors. Read about my mystical rituals and Halloween fun!</p>
+        </section>
+
+ <div class="festival-imagery">
+  <h2>Posts</h2>
+
+  <div class="image-gallery">
+    <figure class="blog-image">
+      <a href="https://example.com/pumpkinpepper">
+        <img src="pumpkinpepper.jpeg" alt="pumpkin pepper jack o' lantern">
+      </a>
+      <figcaption>[image: an orange bell pepper carved like a jack o' lantern, stuffed with rice and baked.]</figcaption>
+       <p>read about my October 1st tradition!</p>
+
+    </figure>
+
+    <figure class="blog-image">
+      <a href="https://example.com/window">
+        <img src="window.jpeg" alt="foggy morning view">
+      </a>
+      <figcaption>[image: looking out the blogger's window into a foggy morning.]</figcaption>
+   <p>reflections on the Fall</p>
+    </figure>
+
+    <figure class="blog-image">
+      <a href="https://example.com/altar">
+        <img src="pumpkinwaffles.jpeg" alt="autumn altar">
+      </a>
+      <figcaption>[image: white kitchen countertop. On a white plate are two waffles with pumpkin shapes ironed into them. And a ghost shaped, filled coffee cup. Background includes soap, a towel dispenser, an apple shaped fruit bowl filled with an apple, bananas, and two onions; there is a slightly elevated windowsill upon which are two pots and a badger skull.]</figcaption>
+   <p>freezing for future</p>
+    </figure>
+
+    <figure class="blog-image">
+      <a href="https://example.com/altar">
+        <img src="familiar-in-candy-corn-costume.jpeg" alt="autumn altar">
+            <img src="familiar-ouija.jpeg" alt="autumn altar">
+    </a>
+
+      <figcaption>[image: .]</figcaption>
+      <p>my familiar</p>
+    </figure>
+
+    <figure class="blog-image">
+      <a href="https://example.com/altar">
+        <img src="pumpkinstew.jpeg" alt="autumn altar">
+      </a>
+      <figcaption>[image: .]</figcaption>
+   <p>brewing stews like a witch</p>
+    </figure>
+
+    <figure class="blog-image">
+      <a href="https://example.com/altar">
+        <img src="ritualmooncookies.jpeg" alt="autumn altar">
+      </a>
+      <figcaption>[image: .]</figcaption>
+   <p>full hunter's moon celebrations</p>
+    </figure>
+    
+  </div>
+</div>
+
+
+        <div class="candles">
+            <span>🕯</span>
+            <span>🕯</span>
+            <span>🕯</span>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Tertiary Occult | All Rights Reserved</p>
+    </footer>
+</body>
+</html>

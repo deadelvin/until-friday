@@ -1,0 +1,372 @@
+<!-- post1.html -->
+<!-- journal-entry.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>trans-</title>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400&family=Special+Elite&display=swap" rel="stylesheet">
+  <style>
+    /* Base Styles */
+    body {
+      font-family: 'Merriweather', serif;
+      background-color: #101010;
+      color: #7fe886;
+      margin: 0;
+      padding: 2rem;
+      line-height: 1.6;
+      background-image: radial-gradient(circle at top left, #0a0a0a, #101010, #0f0f0f);
+    }
+
+    /* Journal Box */
+    .journal-container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: #1e1e1e;
+      border: 2px solid #1be729;
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: 0 0 25px rgba(27, 231, 41, 0.3);
+    }
+
+    .journal-title {
+      font-family: 'Special Elite', cursive;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      text-align: center;
+      color: #1be729;
+      text-shadow: 0px 0px 8px #000;
+    }
+
+    .journal-content {
+      font-size: 1.2rem;
+      color: #d8c3a5;
+      white-space: pre-line;
+    }
+
+    .journal-content p {
+  margin-top: 0.5rem;   /* or 0 if you want no extra gap */
+  margin-bottom: 0.5rem;
+  line-height: 1.6;     /* keep line spacing comfortable */
+}
+
+
+    .journal-subtitle {
+  font-size: 1.2rem;   /* smaller than title */
+  text-align: center;
+  color: #1be729;      /* same green as the title */
+  font-style: italic;  /* keeps it looking like a subtitle */
+  margin-top: -0.5rem; /* pull it closer to the title */
+  margin-bottom: 1.5rem;
+}
+
+.post-subtitle {
+  font-size: 1.3rem;        /* a bit bigger than body text */
+  text-align: left;         /* aligned with the body text */
+  color: #d8ffd8;           /* soft/light green */
+  margin: 1rem 0;           /* space above and below */
+  font-family: 'Merriweather', serif; /* keeps body style for contrast */
+}
+
+    /* Symbols */
+    .symbol {
+      position: absolute;
+      font-size: 2.5rem;
+      color: rgba(242, 228, 185, 0.6);
+      animation: glow 5s infinite ease-in-out;
+    }
+    .symbol.left { top: 30px; left: 30px; }
+    .symbol.right { top: 30px; right: 30px; }
+
+    @keyframes glow {
+      0% { text-shadow: 0 0 5px #f1ffec99, 0 0 15px #1be729; }
+      50% { text-shadow: 0 0 10px #c5ffcb, 0 0 30px #1be729; }
+      100% { text-shadow: 0 0 5px #f1ffec99, 0 0 15px #1be729; }
+    }
+
+    /* Back link */
+    .back-link {
+      display: block;
+      margin-top: 2rem;
+      text-align: center;
+      font-size: 1.2rem;
+      font-family: 'Special Elite', cursive;
+    }
+
+    .back-link a {
+      color: #1be729;
+      text-decoration: none;
+      border-bottom: 1px dashed #1be729;
+      transition: color 0.3s ease;
+    }
+
+    .back-link a:hover {
+      color: #7fe886;
+    }
+
+    /* Social Media Icons */
+    .social {
+      display: flex;
+      justify-content: center;
+      margin-top: 2rem;
+      gap: 15px;
+    }
+
+    .social a {
+      color: #1be729;
+      font-size: 1.8rem;
+      text-decoration: none;
+      transition: transform 0.3s ease, color 0.3s ease;
+    }
+
+    .social a:hover {
+      color: #7fe886;
+      transform: scale(1.2) rotate(-5deg);
+    }
+
+    ul {
+    list-style: none; /* Ensures no default bullets */
+    padding-left: 0; /* Removes default padding */
+}
+
+ul li {
+    color: #dbc5b9; /* Matches text color with other columns */
+    display: flex;
+    align-items: center; /* Aligns text and arrow symbol properly */
+}
+
+ul li::before {
+    content: "➵"; /* Custom arrow bullet */
+    color: #1be729; /* Keeps arrow green */
+    font-size: 1.5rem; /* Adjust size */
+    margin-right: 10px; /* Adds spacing between bullet and text */
+}
+
+.references {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid #1be729; /* optional divider */
+}
+
+.references-title {
+  font-size: 1.5rem;
+  color: #1be729; /* matches the title style */
+  text-align: left;
+  margin-bottom: 1rem;
+  font-family: 'Special Elite', cursive;
+}
+
+.reference-list p {
+  margin: 0.5rem 0;       /* tighter spacing between entries */
+  padding-left: 2rem;   /* indent whole block */
+  text-indent: -2.5rem;   /* pull first line back */
+}
+a {
+  color: #1be729;          /* your bright green */
+  text-decoration: none;   /* removes underline */
+}
+
+a:hover {
+  color: #7fe886;          /* softer green on hover */
+}
+
+.post-date {
+  font-size: 0.9rem;          /* smaller than subtitle */
+  color: #c8ffc8;             /* subtle light green */
+  text-align: center;          /* align under subtitle/title */
+  margin-top: -0.3rem;        /* pull it closer to subtitle */
+  margin-bottom: 1.5rem;      /* space before content */
+  font-style: italic;          /* optional emphasis */
+}
+
+/* Cite Button */
+.cite-btn {
+  background-color: #1be729;
+  color: #101010;
+  border: none;
+  padding: 0.7rem 1.5rem;
+  border-radius: 8px;
+  font-family: 'Special Elite', cursive;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.cite-btn:hover {
+  background-color: #101010;
+  color: #1be729;
+  border: 1px solid #1be729;
+}
+
+/* Modal Overlay */
+.modal {
+  display: none; 
+  position: fixed; 
+  z-index: 999; 
+  padding-top: 100px; 
+  left: 0; 
+  top: 0; 
+  width: 100%; 
+  height: 100%;
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* Modal Content Box */
+.modal-content {
+  background-color: #1e1e1e;
+  margin: auto;
+  padding: 20px;
+  border: 2px solid #1be729;
+  width: 70%;
+  border-radius: 12px;
+  color: #d8c3a5;
+  font-family: 'Merriweather', serif;
+  box-shadow: 0 0 20px #1be729;
+}
+
+/* Close Button */
+.close {
+  color: #1be729;
+  float: right;
+  font-size: 2rem;
+  cursor: pointer;
+}
+.close:hover {
+  color: #ffffff;
+}
+
+/* Floating Share Bar */
+.share-bar {
+  position: fixed;
+  top: 50%;
+  left: 80px; /* adjust distance from edge */
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  z-index: 1000;
+}
+
+/* Title */
+.share-title {
+  font-family: 'Special Elite', cursive;
+  font-size: 1rem;
+  color: #1be729;
+  text-shadow: 0 0 6px #1be729, 0 0 12px #7fe886;
+  margin-bottom: 10px;
+}
+
+/* Placeholder Icons */
+.share-bar a {
+  font-size: 2rem;
+  color: transparent;               /* makes the shape hollow */
+  -webkit-text-stroke: 1px #1be729; /* neon outline */
+  text-decoration: none;
+  transition: transform 0.3s ease, -webkit-text-stroke 0.3s ease;
+  text-shadow: 0 0 6px rgba(27, 231, 41, 0.6);
+}
+
+.share-bar a:hover {
+  -webkit-text-stroke: 1px #7fe886; /* glow shift on hover */
+  transform: scale(1.3) rotate(-8deg);
+}
+.subtext {
+  font-size: 0.8rem;       /* smaller than normal text */
+  color: #1be729;             /* muted color */
+  line-height: 1.2;        /* optional: tighter line spacing */
+  margin-top: 0.3rem;      /* space above */
+  margin-bottom: 0.3rem;   /* space below */
+  font-style: italic;      /* optional: style it */
+}
+
+
+  </style>
+</head>
+<body>
+
+  <!-- Emo symbols (placeholders) -->
+  <div class="symbol left">⚧︎</div>
+  <div class="symbol right">✒</div>
+
+    <div class="back-link">
+    <a href="WITCH102Blog.html">← Back to All Entries</a>
+  </div>
+
+
+
+
+<div class="share-bar">
+  <div class="share-title">✦ Share This ✦</div>
+  <a id="fbShare" href="#" target="_blank" title="Share on Facebook">ⓕ</a>
+  <a id="bsShare" href="#" target="_blank" title="Share on Bluesky">ཐི༏ཋྀ</a>
+  <a id="rdShare" href="#" target="_blank" title="Share on Reddit">𖠌</a>
+</div>
+
+<script>
+  const pageUrl = encodeURIComponent(window.location.href);
+  const pageTitle = encodeURIComponent(document.title);
+
+  document.getElementById('fbShare').href = `https://www.facebook.com/sharer/sharer.php?u=${pageUrl}`;
+  document.getElementById('bsShare').href = `https://bsky.app/intent/compose?text=Check%20this%20out:%20${pageUrl}`;
+  document.getElementById('rdShare').href = `https://www.reddit.com/submit?url=${pageUrl}&title=${pageTitle}`;
+</script>
+
+
+<div class="journal-container">
+  <h1 class="journal-title"><i>Trans-</i> is Magic</h1>
+  <h2 class="journal-subtitle">by dead-elvin</h2>
+    <p class="post-date">October 23, 2025</p>
+
+  <div class="journal-content">
+    <h2 class="post-subtitle">Intro</h2>
+   <p>Much can be gleaned and used for magic that comes from studying language.</p> 
+   <p>Prefixes, roots, suffixes, etymologies… </p>
+   <p>In this post I focus on the prefix of <i>trans- </i>, which means to go “across,” “over,” or “beyond.” I briefly relay the connection between magic and this concept of  <i>transness</i>.  </p>
+  <div class="subtext"> <p>Make no mistake – this post has an openly pro-transgender agenda, as the implications of analysis would show trans people to be magical. </p></div>
+    <h2 class="post-subtitle">To Trans -late, -fer, -scribe, -ition</h2>
+<p>Owen Davies, author of <i> Grimoires: A History of Magic Books </i>, outlines the story of Solomon receiving a ring from the Archangel Michael. This ring compelled 36+ demons to appear to Solomon, identify themselves, and reveal their evil powers as well as how they could be controlled by writing down certain words. Since the magical ring was about exertiing <i>power</i> over demons, is worth looking at the connection between magic and power. </p>
+ <p>There is a common idea that “knowledge is power.” In this context, the particular form of knowledge under consideration is literacy in the written word (being that grimoires are a tradition of writing and reading). Written literacy in the ancient world was a skill of a select group, which gave it a position of power and even mystery. Mystery, or hidden knowledge, is where occult interests lie. Furthermore, Davies states that “the medieval era was also an age of extraordinary scholarly collaboration and understanding between different religions and cultures. The writings of the pagan ancient Greeks, Roman, and Egyptians were translated and pored over, and churchmen traveled across Europe to immerse themselves in Arabic sciences and Jewish mysticism taught in schools of Spain and Southern France” (6-7). Add to literacy multilingual fluency, and you tap into the magical ability of trans -lation. The ability to translate signifies that one has access to “hidden” knowledge (or just knowledge that not everyone has access to). </p>
+   <p><div class="subtext">(Admittedly, I write this from the perspective of a 90ds kid from the northern hemisphere who, despite being involved in a language-related professional field, is effectively monolingual in terms of fluency; whereas monolingualism is, in fact, not the norm across the globe, and doubtfully so in ancient times as well; though, as noted, written literacy was more of an exception than a norm, so I still say the point of knowldge/power written in "other" languages being part of what imbues something with occult mystery stands...)</div> </p>
+<p>In some ways, the topic of translation gets at the issue of <i>othering</i>.  For instance, Crawford & Gorton state that in many cultures around the world, the people who practice “magic” or “witchcraft” are considered to be the neighboring people who “we” (the party doing the labeling of the <i>other</i>) “don’t really understand” (2020, 7:35). In this, it might be an extension of othering to view the ability to translate as something that can contribute to one’s magical practice. </p>
+<p>Also worthy of discussion here is that death is often viewed as a trans -ition of sorts. Crawford & Gorton state that a word particularly connected to topics of magic in ancient Greek is that of yonteía or “goēteía,” translated as sorcery. Gorton states that this word goes back to a root that originally meant to cry or wail out, as a “Goace” (sp?) is someone hired to wail at funerals, and, as such, they came to be associated with death, and eventually this correlation with the dead included that such persons might be able to communicate with the dead (13:04). </p>
+<p>I would tentatively include the word “engrave” in this tradition of associating magic with the dead and discerning the relationship between writing and magic. Davies states that the magician Albertus Magnus of Cologne had the Almandal (Arabic word for “a wax tablet altar on which the magician <bold>engraves</bold> divine names and the seals of Solomon with a silver stylus”), which is a straightforward guide to invoke angels (14). The etymology of “engrave” follows that en- is “in,” and -grave is, simply, “grave.” Of course, this comes from the “obsolete” French word <i>engraver</i> where the etymology is actually the verb “graver” meaning “to carve” an so is not associated necessarily with graves (of the dead). And yet, would it not include those who carve hard surfaces – such as headstones? The French <i>graver</i> comes from the Proto-European ghrebh meaning "to dig, scratch, scrape." Alas... the connection to the dead is unsubstantiated in this example (though I’m reluctant to dismiss it outright). However, what our "engrave" example does continue to support is the relationship between writing and magic.</p>
+<p>Regarding Magnus’ Almandal, or altar upon which one engraves, this might otherwise be said to be a place where one <bold>trans</bold>scribes. I consider two points with regard to this: one) that the tablet altar in a magician’s practice today might be their notebook, but that the “altar” aspect easily lends itself to a place where one has a formal or ritualistic practice of writing – e.g. a desk where one <i>scribes</i>; and two) as someone learning the German language, I know that the German word for desk is “schreibtish,” which more directly might mean “writing table,” with the first part “screib” sounding quite like “scribe.” Davies states that “The power of written words was effected through their <bold>trans</bold>cription on to ritual or protective objects” (2010, 9, emphasis added). A contemporary witch might, then, consider their desk an altar – a sacred place where they (trans)scribe spells, and (trans)fer them to their “tablets” (especially fitting for the witch fond of electronics) or other items. </p>
+<p>Crawford & Gorton make an interesting point about a phenomenon historically commonly viewed as magic: <bold>trans</bold> -itions. For instance, they reference beer and wine (10:00), stating that the process of creating these may have prompted ancients to ask: “how does it <strong>trans</strong>ition into this?” (emphasis added). </p>
+<p>Seems like magic, don’t it? </p>
+<div class="subtext"><p>*Please forgive any errors in logic, sensibility, composition, reference exactness, etc., as this is a first draft and I desired to post something for at least one of the classes I studied in week 3. </div></p>
+
+<div class="references">
+  <h2 class="references-title">References</h2>
+  <div class="reference-list">
+<p>Davies, Owen. 2010. <i>Grimoires: A History of Magic Books.</i> Oxford University Press.</p>
+<p>Jackson Crawford, and Luke Gorton, dirs. 2020. Magic in the Ancient World (with Dr. Luke Gorton). 24:48. <a href="https://www.youtube.com/watch?v=lUggEZwxn1g" target="blank">https://www.youtube.com/watch?v=lUggEZwxn1g</a> </p>
+
+
+</div>
+</div>
+
+
+</div>
+</div>
+
+
+  <!-- Back to entries -->
+  <div class="back-link">
+    <a href="WITCH102Blog.html">← Back to All Entries</a>
+  </div>
+
+
+
+         <div class="social">
+        <a href="https://bsky.app/profile/until-friday.bsky.social" target="_blank" data-tooltip="Bluesky">⛆</a>
+        <a href="https://www.tiktok.com/@until_friday" target="_blank" data-tooltip="tiktok">✘</a>
+        <a href="blank" target="_blank" data-tooltip="This Isn't Really a Link But I wanted Three Images Here That Looked Clickable Sorry">☻</a>
+    </div>
+
+
+
+</body>
+</html>
+
+

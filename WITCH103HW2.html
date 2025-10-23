@@ -1,0 +1,471 @@
+<!-- post.html -->
+<!-- journal-entry.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>updates</title>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400&family=Special+Elite&display=swap" rel="stylesheet">
+  <style>
+    /* Base Styles */
+    body {
+      font-family: 'Merriweather', serif;
+      background-color: #101010;
+      color: #7fe886;
+      margin: 0;
+      padding: 2rem;
+      line-height: 1.6;
+      background-image: radial-gradient(circle at top left, #0a0a0a, #101010, #0f0f0f);
+    }
+
+    /* Journal Box */
+    .journal-container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: #1e1e1e;
+      border: 2px solid #1be729;
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: 0 0 25px rgba(27, 231, 41, 0.3);
+    }
+
+    .journal-title {
+      font-family: 'Special Elite', cursive;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      text-align: center;
+      color: #1be729;
+      text-shadow: 0px 0px 8px #000;
+    }
+
+    .journal-content {
+      font-size: 1.2rem;
+      color: #d8c3a5;
+      white-space: pre-line;
+    }
+
+    .journal-content p {
+  margin-top: 0.5rem;   /* or 0 if you want no extra gap */
+  margin-bottom: 0.5rem;
+  line-height: 1.6;     /* keep line spacing comfortable */
+}
+
+    .journal-subtitle {
+  font-size: 1.2rem;   /* smaller than title */
+  text-align: center;
+  color: #1be729;      /* same green as the title */
+  font-style: italic;  /* keeps it looking like a subtitle */
+  margin-top: -0.5rem; /* pull it closer to the title */
+  margin-bottom: 1.5rem;
+}
+
+.post-subtitle {
+  font-size: 1.3rem;        /* a bit bigger than body text */
+  text-align: left;         /* aligned with the body text */
+  color: #d8ffd8;           /* soft/light green */
+  margin: 1rem 0;           /* space above and below */
+  font-family: 'Merriweather', serif; /* keeps body style for contrast */
+}
+
+    /* Symbols */
+    .symbol {
+      position: absolute;
+      font-size: 2.5rem;
+      color: rgba(242, 228, 185, 0.6);
+      animation: glow 5s infinite ease-in-out;
+    }
+    .symbol.left { top: 30px; left: 30px; }
+    .symbol.right { top: 30px; right: 30px; }
+
+    @keyframes glow {
+      0% { text-shadow: 0 0 5px #f1ffec99, 0 0 15px #1be729; }
+      50% { text-shadow: 0 0 10px #c5ffcb, 0 0 30px #1be729; }
+      100% { text-shadow: 0 0 5px #f1ffec99, 0 0 15px #1be729; }
+    }
+
+    /* Back link */
+    .back-link {
+      display: block;
+      margin-top: 2rem;
+      text-align: center;
+      font-size: 1.2rem;
+      font-family: 'Special Elite', cursive;
+    }
+
+    .back-link a {
+      color: #1be729;
+      text-decoration: none;
+      border-bottom: 1px dashed #1be729;
+      transition: color 0.3s ease;
+    }
+
+    .back-link a:hover {
+      color: #7fe886;
+    }
+
+    /* Social Media Icons */
+    .social {
+      display: flex;
+      justify-content: center;
+      margin-top: 2rem;
+      gap: 15px;
+    }
+
+    .social a {
+      color: #1be729;
+      font-size: 1.8rem;
+      text-decoration: none;
+      transition: transform 0.3s ease, color 0.3s ease;
+    }
+
+    .social a:hover {
+      color: #7fe886;
+      transform: scale(1.2) rotate(-5deg);
+    }
+
+    ul {
+    list-style: none; /* Ensures no default bullets */
+    padding-left: 0; /* Removes default padding */
+}
+
+ul li {
+    color: #dbc5b9; /* Matches text color with other columns */
+    display: flex;
+    align-items: center; /* Aligns text and arrow symbol properly */
+}
+
+ul li::before {
+    content: "➵"; /* Custom arrow bullet */
+    color: #1be729; /* Keeps arrow green */
+    font-size: 1.5rem; /* Adjust size */
+    margin-right: 10px; /* Adds spacing between bullet and text */
+}
+
+.references {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid #1be729; /* optional divider */
+}
+
+.references-title {
+  font-size: 1.5rem;
+  color: #1be729; /* matches the title style */
+  text-align: left;
+  margin-bottom: 1rem;
+  font-family: 'Special Elite', cursive;
+}
+
+.reference-list p {
+  margin: 0.5rem 0;       /* tighter spacing between entries */
+  padding-left: 2rem;   /* indent whole block */
+  text-indent: -2.5rem;   /* pull first line back */
+}
+a {
+  color: #1be729;          /* your bright green */
+  text-decoration: none;   /* removes underline */
+}
+
+a:hover {
+  color: #7fe886;          /* softer green on hover */
+}
+
+.post-date {
+  font-size: 0.9rem;          /* smaller than subtitle */
+  color: #c8ffc8;             /* subtle light green */
+  text-align: center;          /* align under subtitle/title */
+  margin-top: -0.3rem;        /* pull it closer to subtitle */
+  margin-bottom: 1.5rem;      /* space before content */
+  font-style: italic;          /* optional emphasis */
+}
+
+/* Cite Button */
+.cite-btn {
+  background-color: #1be729;
+  color: #101010;
+  border: none;
+  padding: 0.7rem 1.5rem;
+  border-radius: 8px;
+  font-family: 'Special Elite', cursive;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.cite-btn:hover {
+  background-color: #101010;
+  color: #1be729;
+  border: 1px solid #1be729;
+}
+
+/* Modal Overlay */
+.modal {
+  display: none; 
+  position: fixed; 
+  z-index: 999; 
+  padding-top: 100px; 
+  left: 0; 
+  top: 0; 
+  width: 100%; 
+  height: 100%;
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* Modal Content Box */
+.modal-content {
+  background-color: #1e1e1e;
+  margin: auto;
+  padding: 20px;
+  border: 2px solid #1be729;
+  width: 70%;
+  border-radius: 12px;
+  color: #d8c3a5;
+  font-family: 'Merriweather', serif;
+  box-shadow: 0 0 20px #1be729;
+}
+
+/* Close Button */
+.close {
+  color: #1be729;
+  float: right;
+  font-size: 2rem;
+  cursor: pointer;
+}
+.close:hover {
+  color: #ffffff;
+}
+
+/* Floating Share Bar */
+.share-bar {
+  position: fixed;
+  top: 50%;
+  left: 80px; /* adjust distance from edge */
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  z-index: 1000;
+}
+
+/* Title */
+.share-title {
+  font-family: 'Special Elite', cursive;
+  font-size: 1rem;
+  color: #1be729;
+  text-shadow: 0 0 6px #1be729, 0 0 12px #7fe886;
+  margin-bottom: 10px;
+}
+
+/* Placeholder Icons */
+.share-bar a {
+  font-size: 2rem;
+  color: transparent;               /* makes the shape hollow */
+  -webkit-text-stroke: 1px #1be729; /* neon outline */
+  text-decoration: none;
+  transition: transform 0.3s ease, -webkit-text-stroke 0.3s ease;
+  text-shadow: 0 0 6px rgba(27, 231, 41, 0.6);
+}
+
+.share-bar a:hover {
+  -webkit-text-stroke: 1px #7fe886; /* glow shift on hover */
+  transform: scale(1.3) rotate(-8deg);
+}
+
+.footnote {
+  position: relative;
+  cursor: help;
+  color: #1be729;
+  font-size: 0.8rem;
+}
+
+.footnote-text {
+  visibility: hidden;
+  background-color: #1e1e1e;
+  color: #f5e8d0;
+  text-align: left;
+  border-radius: 5px;
+  padding: 8px;
+  position: absolute;
+  z-index: 10;
+  bottom: 125%;
+  left: 0;
+  width: 250px;
+  box-shadow: 0 0 5px #1be729;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.footnote:hover .footnote-text {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Main single image earlier in post - keeps original styling */
+.blog-image.single {
+  text-align: center;
+  margin: 2rem auto;
+}
+
+/* Only the first/single image */
+.blog-image.single img {
+  display: block;
+  width: 70%;        /* makes it smaller than full width but still prominent */
+  max-width: 600px;  /* caps it on large screens */
+  margin: 2rem auto;
+  border: 2px solid #1be729;
+  border-radius: 10px;
+  box-shadow: 0 0 12px rgba(27, 231, 41, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.blog-image.single img:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 22px rgba(27, 231, 41, 0.5);
+}
+
+
+/* Row of three images */
+.blog-image.row {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin: 2rem auto;
+  flex-wrap: wrap; /* wraps on smaller screens */
+}
+
+.blog-image.row img {
+  display: block;
+  width: calc(33% - 0.66rem); /* roughly a third minus gap */
+  max-width: 300px;           /* keeps them nice and large */
+  border: 2px solid #1be729;
+  border-radius: 10px;
+  box-shadow: 0 0 12px rgba(27, 231, 41, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.blog-image.row img:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 22px rgba(27, 231, 41, 0.5);
+}
+
+/* Optional: responsive for small screens */
+@media (max-width: 768px) {
+  .blog-image.row img {
+    width: 48%;  /* two per row */
+    max-width: 48%;
+  }
+}
+
+@media (max-width: 480px) {
+  .blog-image.row img {
+    width: 100%; /* stacked vertically */
+    max-width: 100%;
+  }
+}
+
+
+
+.numbered-list {
+  color: #d8c3a5;              /* matches your paragraph text */
+  font-family: 'Merriweather', serif;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-left: 2rem;           /* indents list slightly */
+  counter-reset: list-counter; /* optional custom numbering */
+}
+
+.numbered-list li {
+  margin-bottom: 0.6rem;
+}
+
+.numbered-list li::marker {
+  color: #1be729;
+  text-shadow: 0 0 5px rgba(27, 231, 41, 0.5);
+}
+
+.sub-bullets {
+  list-style-type: "➤ ";     /* small arrow bullet, fits your style */
+  margin-left: 2rem;         /* indent under main point */
+  color: #dbc5b9;            /* slightly softer than main text */
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.sub-bullets li {
+  margin: 0.4rem 0;
+}
+.sub-bullets li::marker {
+  color: #1be729;
+  text-shadow: 0 0 4px rgba(27, 231, 41, 0.5);
+}
+  </style>
+</head>
+<body>
+
+  <!-- Emo symbols (placeholders) -->
+  <div class="symbol left">𓎩</div>
+  <div class="symbol right">☘</div>
+
+    <div class="back-link">
+    <a href="WITCH103Blog.html">← Back to All Entries</a>
+  </div>
+
+<div class="share-bar">
+  <div class="share-title">✦ Share This ✦</div>
+  <a id="fbShare" href="#" target="_blank" title="Share on Facebook">ⓕ</a>
+  <a id="bsShare" href="#" target="_blank" title="Share on Bluesky">ཐི༏ཋྀ</a>
+  <a id="rdShare" href="#" target="_blank" title="Share on Reddit">𖠌</a>
+</div>
+
+<script>
+  const pageUrl = encodeURIComponent(window.location.href);
+  const pageTitle = encodeURIComponent(document.title);
+
+  document.getElementById('fbShare').href = `https://www.facebook.com/sharer/sharer.php?u=${pageUrl}`;
+  document.getElementById('bsShare').href = `https://bsky.app/intent/compose?text=Check%20this%20out:%20${pageUrl}`;
+  document.getElementById('rdShare').href = `https://www.reddit.com/submit?url=${pageUrl}&title=${pageTitle}`;
+</script>
+
+
+<div class="journal-container">
+  <h1 class="journal-title">Short Reflection</h1>
+  <h2 class="journal-subtitle">by dead-elvin</h2>
+    <p class="post-date">October 15, 2025</p>
+
+  <div class="journal-content">
+    <h2 class="post-subtitle">Update On Progress</h2>
+    <p>This week, I spent some more time with the plants. I sketched myself with my cat and the plants. </p>
+<figure class="blog-image single">
+  <img src="witch103-drawingplants-watermarkattempt.png" alt="Main Herb">
+  <figcaption>[image: drawing of a man w/ his cat surrounded by plants and two witchy ghosts].</figcaption>
+</figure>
+  </li>  
+  <p>Additionally, I harvested some lemon balm mint and had a cup of tea with some fresh leaves. I’m now drying the remainder of it for future use in teas (and potentially salves, tinctures, etc. when I start learning to make those), as well as the common plantain leaves and self-heal stems and flowers. </p>
+<figure class="blog-image row">
+  <img src="lemonbalmcut.png" alt="lemonbalm cut">
+  <img src="lemonbalmclean.png" alt="lemonbalm clean">
+  <img src="lemonbalmtea.jpg" alt="lemonbalm tea">
+
+  <figcaption>[images: cut lemon balm in a fabric basket hanging from a fence, lemon balm being rinsed in a sink, lemon balm tea].</figcaption>
+</figure>
+  
+<p>I was also aware of a few other herbs in my yard I want to work with and gather, such as dandelions, yarrow, and feverfew.</p>
+  
+<p>I grabbed a leaf stock from a tree of heaven to use in a charm, but left alone the holly for now – come Christmastime I’ll do a small craft, spell, or charm with it. I’d also like to make the yard inviting for the Little People over winter.</p>
+
+
+  <!-- Back to entries -->
+  <div class="back-link">
+    <a href="WITCH103Blog.html">← Back to All Entries</a>
+  </div>
+
+         <div class="social">
+        <a href="https://bsky.app/profile/until-friday.bsky.social" target="_blank" data-tooltip="Bluesky">⛆</a>
+        <a href="https://www.tiktok.com/@until_friday" target="_blank" data-tooltip="tiktok">✘</a>
+        <a href="blank" target="_blank" data-tooltip="This Isn't Really a Link But I wanted Three Images Here That Looked Clickable Sorry">☻</a>
+    </div>
+
+</body>
+</html>
+
+

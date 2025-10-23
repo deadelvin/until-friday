@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>The Grimoire — Until-Friday</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400&family=Special+Elite&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg: #0f0f0f;
+      --card: #1e1e1e;
+      --accent: #1be729;
+      --muted: #d8c3a5;
+      --glass: rgba(255,255,255,0.02);
+      --maxwidth: 1100px;
+      --card-radius: 12px;
+      --card-shadow: 0 8px 30px rgba(11, 88, 24, 0.12);
+    }
+
+    html,body{height:100%;}
+    body{
+      margin:0;
+      min-height:100%;
+      background: radial-gradient(circle at 8% 6%, #0a0a0a, var(--bg) 40%);
+      color:var(--muted);
+      font-family: "Merriweather", serif;
+      -webkit-font-smoothing:antialiased;
+      padding:2rem;
+      display:flex;
+      justify-content:center;
+    }
+
+    .page {
+      width:100%;
+      max-width:var(--maxwidth);
+    }
+
+    header.grimoire-header{
+      text-align:center;
+      margin-bottom:1.25rem;
+    }
+
+    header h1{
+      font-family:'Special Elite',cursive;
+      color:var(--accent);
+      font-size:2.2rem;
+      margin:0;
+      letter-spacing:1px;
+      text-shadow: 0 0 6px rgba(27,231,41,0.12);
+    }
+
+    header p{
+      margin:0.5rem 0 1rem;
+      color:#bfeebb;
+      opacity:0.9;
+    }
+
+    /* SEARCH + FILTER BAR */
+    .controls{
+      display:flex;
+      gap:0.75rem;
+      justify-content:center;
+      align-items:center;
+      margin-bottom:1.25rem;
+      flex-wrap:wrap;
+    }
+
+    .search {
+      display:flex;
+      align-items:center;
+      gap:.5rem;
+      background:var(--glass);
+      border:1px solid rgba(27,231,41,0.08);
+      padding:.35rem .6rem;
+      border-radius:999px;
+      min-width:240px;
+      box-shadow: inset 0 -1px 0 rgba(255,255,255,0.02);
+    }
+    .search input{
+      background:transparent;
+      border:0;
+      outline:0;
+      color:var(--muted);
+      font-size:0.95rem;
+      width:220px;
+    }
+    .search input::placeholder{color:#9fbf9f}
+
+    .filters{
+      display:flex;
+      gap:.5rem;
+      align-items:center;
+    }
+    .filters select, .filters button {
+      background:transparent;
+      color:var(--muted);
+      border:1px solid rgba(27,231,41,0.08);
+      padding:.45rem .65rem;
+      border-radius:8px;
+      font-size:0.95rem;
+      cursor:pointer;
+    }
+
+    .filters select:focus, .search input:focus, .filters button:focus{
+      outline:2px solid rgba(27,231,41,0.08);
+      box-shadow:0 0 8px rgba(27,231,41,0.06);
+    }
+
+    /* GRID */
+    .grid {
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));
+      gap:1.25rem;
+      align-items:start;
+    }
+
+    /* CARD (flip) */
+    .card {
+      perspective: 1200px;
+      height: 360px; /* fixed card height so backs fit; tweak as you like */
+    }
+
+    .card-inner{
+      position:relative;
+      width:100%;
+      height:100%;
+      transform-style:preserve-3d;
+      transition: transform 550ms cubic-bezier(.2,.9,.3,1);
+      border-radius: var(--card-radius);
+      cursor:pointer;
+      box-shadow: var(--card-shadow);
+    }
+
+    /* flipped by JS toggling .is-flipped on .card-inner */
+    .card.is-flipped .card-inner { transform: rotateY(180deg); }
+
+    .card-face{
+      position:absolute;
+      inset:0;
+      backface-visibility:hidden;
+      border-radius: var(--card-radius);
+      overflow:hidden;
+      display:flex;
+      flex-direction:column;
+      justify-content:flex-start;
+      align-items:stretch;
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.06));
+      border: 1px solid rgba(27,231,41,0.06);
+    }
+
+    /* front / back specifics */
+    .card-front{ padding:1rem; }
+    .card-back{
+      padding:1rem;
+      transform: rotateY(180deg);
+      background: linear-gradient(180deg, rgba(0,0,0,0.04), rgba(255,255,255,0.01));
+    }
+
+    /* Title / Sigil */
+    .card-title {
+      font-size:1.05rem;
+      color:var(--accent);
+      margin:0 0 .4rem 0;
+      font-family:'Special Elite',cursive;
+    }
+
+    .sigil {
+      width:64px;
+      height:64px;
+      border-radius:8px;
+      display:inline-block;
+      background:linear-gradient(135deg, rgba(27,231,41,0.06), rgba(27,231,41,0.02));
+      border:2px solid rgba(27,231,41,0.18);
+      color:var(--accent);
+      font-size:1.8rem;
+      line-height:64px;
+      text-align:center;
+      margin-right:.6rem;
+      flex:0 0 64px;
+      box-shadow: 0 6px 18px rgba(11,88,24,0.06);
+    }
+
+    .card-head{
+      display:flex;
+      align-items:center;
+      gap:.6rem;
+      margin-bottom:.6rem;
+    }
+
+    .card-excerpt{
+      color:var(--muted);
+      font-size:0.97rem;
+      line-height:1.45;
+      flex:1;
+      overflow:hidden;
+      display:-webkit-box;
+      -webkit-line-clamp:6; /* limit visible lines on front */
+      -webkit-box-orient:vertical;
+      text-overflow:ellipsis;
+    }
+
+    /* back content area: scroll if needed but we provide read more */
+    .card-back .influences {
+      font-size:0.92rem;
+      color:#e7dccd;
+      line-height:1.4;
+      overflow:auto;
+      max-height: calc(100% - 60px);
+      padding-right:6px;
+    }
+
+    .influences a{
+      color:var(--accent);
+      text-decoration:underline;
+      text-underline-offset:3px;
+    }
+
+    .card-actions{
+      display:flex;
+      gap:.5rem;
+      justify-content:space-between;
+      align-items:center;
+      margin-top:.6rem;
+    }
+
+    .small-btn {
+      background:transparent;
+      border:1px solid rgba(27,231,41,0.08);
+      color:var(--muted);
+      padding:.35rem .6rem;
+      border-radius:8px;
+      cursor:pointer;
+      font-size:.9rem;
+    }
+    .small-btn:focus{ outline:2px solid rgba(27,231,41,0.08); }
+
+    /* modal expand for long reflections */
+    .modal {
+      position:fixed;
+      inset:0;
+      display:none;
+      background:rgba(0,0,0,0.6);
+      align-items:center;
+      justify-content:center;
+      z-index:1200;
+      padding:1rem;
+    }
+    .modal.open{ display:flex; }
+    .modal-dialog {
+      max-width:820px;
+      width:100%;
+      max-height:90vh;
+      overflow:auto;
+      background:var(--card);
+      border-radius:12px;
+      padding:1.2rem;
+      border:2px solid rgba(27,231,41,0.08);
+    }
+
+    .modal h3 { color:var(--accent); margin-top:0; font-family:'Special Elite',cursive;}
+
+    /* accessibility focus style */
+    .card:focus-within .card-inner, .card-inner:focus{ outline: 2px solid rgba(27,231,41,0.08); }
+
+    /* footer area */
+    .bottom {
+      text-align:center;
+      margin-top:1.2rem;
+      color:#bfbfb8;
+      font-size:.95rem;
+    }
+
+    /* make it look slightly like cards on parchment */
+    .card-front, .card-back {
+      background-image: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(0,0,0,0.06));
+      border-radius:var(--card-radius);
+    }
+
+    /* small screens - card taller so back fits */
+    @media (max-width:600px){
+      .card{ height: 420px; }
+      .sigil{ width:56px; height:56px; line-height:56px; font-size:1.5rem;}
+    }
+
+    /* instructions area */
+    .hint {
+      font-size:.9rem;
+      color:#a8cfa6;
+      text-align:center;
+      margin-bottom: .6rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="page" id="grimoire">
+
+    <header class="grimoire-header">
+      <h1>✦ the grimoire ✦</h1>
+      <p>click a card to flip it — front: spell, back: influences & notes. use filters / search to find spells.</p>
+    </header>
+
+    <div class="controls" role="region" aria-label="Search and filters">
+      <div class="search" role="search">
+        <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false" style="opacity:.8"><path fill="#9fbf9f" d="M21 21l-4.35-4.35M10.5 18C6.36 18 3 14.64 3 10.5S6.36 3 10.5 3 18 6.36 18 10.5 14.64 18 10.5 18z"></path></svg>
+        <input id="searchInput" type="search" placeholder="Search cards..." aria-label="Search spells by title, text, or tag">
+      </div>
+
+      <div class="filters" aria-hidden="false">
+        <label for="elementFilter" style="display:none">Element</label>
+        <select id="elementFilter" aria-label="Filter by element">
+          <option value="">All elements</option>
+          <!-- predicted categories; change / add later -->
+          <option value="Protection">Protection</option>
+          <option value="Healing">Healing</option>
+          <option value="Divination">Divination</option>
+          <option value="Binding">Binding</option>
+          <option value="Banishing">Banishing</option>
+          <option value="Dream">Dream</option>
+          <option value="Luck">Luck</option>
+          <option value="Herbal">Herbal</option>
+          <option value="Love">Love</option>
+        </select>
+
+        <button id="clearBtn" class="small-btn" title="Clear filters">Clear</button>
+      </div>
+    </div>
+
+    <div class="hint">Tip: tag spells in the HTML using <code>data-tags="Protection Herbal"</code> and they will be searchable & filterable.</div>
+
+    <main>
+      <section class="grid" id="cardGrid" aria-live="polite">
+        <!--
+          HOW TO ADD A CARD:
+          1) Duplicate a <article class="card">...</article>
+          2) Update:
+              - data-title="Spell Name"
+              - data-tags="Protection Herbal"   (space-separated)
+          3) Put your sigil image next to the front text. Replace <img> src as needed.
+        -->
+
+        <!-- sample card 1 -->
+        <article class="card" tabindex="0" data-title="Grounding in Salt" data-tags="Protection Herbal">
+          <div class="card-inner" role="group" aria-label="Grounding in Salt card">
+            <div class="card-face card-front" aria-hidden="false">
+              <div class="card-head">
+                <div class="sigil" aria-hidden="true">🜃</div>
+                <div style="flex:1;">
+                  <h3 class="card-title">Grounding in Salt</h3>
+                  <div class="card-excerpt">
+                    Place a small bowl of salt near your feet. Sit softly, breathe deep, and let tension fall into the earth...
+                  </div>
+                </div>
+              </div>
+              <div style="margin-top:auto; display:flex; justify-content:space-between; align-items:center;">
+                <span style="font-size:.85rem; color:#bfeebb">tags: Protection · Herbal</span>
+                <button class="small-btn flip-btn" aria-label="Flip card">Flip</button>
+              </div>
+            </div>
+
+            <div class="card-face card-back" aria-hidden="true">
+              <div style="display:flex; justify-content:space-between; align-items:start;">
+                <div>
+                  <h4 style="margin:0; color:var(--accent); font-family:'Special Elite',cursive;">Influences & Notes</h4>
+                </div>
+                <div><button class="small-btn readmore" data-title="Grounding in Salt">Read more</button></div>
+              </div>
+
+              <div class="influences" tabindex="0">
+                <p><strong>Primary influences:</strong></p>
+                <ul>
+                  <li><a href="https://en.wikipedia.org/wiki/Root_chakra" target="_blank" rel="noopener">Root/grounding prac. (overview)</a></li>
+                  <li><a href="#" target="_blank" rel="noopener">Traditional salt-cleansing rites (anthology)</a></li>
+                </ul>
+
+                <p><strong>Reflective notes:</strong> This came from working with coastal salt and noticing how simple tactile ritual shifted attention from anxiety to footing. Keep small bowl for 3 nights and replace salt monthly.</p>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- sample card 2 -->
+        <article class="card" tabindex="0" data-title="Ink Binding" data-tags="Binding">
+          <div class="card-inner" role="group" aria-label="Ink Binding card">
+            <div class="card-face card-front">
+              <div class="card-head">
+                <div class="sigil">✒️</div>
+                <div style="flex:1;">
+                  <h3 class="card-title">Ink Binding</h3>
+                  <div class="card-excerpt">Write an intention, fold thrice, bind with ribbon. Knot meanings: 1 truth, 2 strength, 3 closure...</div>
+                </div>
+              </div>
+
+              <div style="margin-top:auto; display:flex; justify-content:space-between; align-items:center;">
+                <span style="font-size:.85rem; color:#bfeebb">tags: Binding</span>
+                <button class="small-btn flip-btn" aria-label="Flip card">Flip</button>
+              </div>
+            </div>
+
+            <div class="card-face card-back">
+              <div style="display:flex; justify-content:space-between; align-items:start;">
+                <div>
+                  <h4 style="margin:0; color:var(--accent); font-family:'Special Elite',cursive;">Influences & Notes</h4>
+                </div>
+                <div><button class="small-btn readmore" data-title="Ink Binding">Read more</button></div>
+              </div>
+
+              <div class="influences" tabindex="0">
+                <p><strong>Primary influences:</strong></p>
+                <ul>
+                  <li><a href="https://example.com/inkbinding" target="_blank" rel="noopener">Traditional binding lore (example link)</a></li>
+                </ul>
+                <p><strong>Reflection:</strong> This technique is useful for promises and small vows — keep away from coerced intentions.</p>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- sample card 3 -->
+        <article class="card" tabindex="0" data-title="Dream Mirror" data-tags="Dream Divination">
+          <div class="card-inner" role="group" aria-label="Dream Mirror card">
+            <div class="card-face card-front">
+              <div class="card-head">
+                <div class="sigil">🔮</div>
+                <div style="flex:1;">
+                  <h3 class="card-title">Dream Mirror</h3>
+                  <div class="card-excerpt">Place small mirror, herbs, and intention. Morning glance yields the first image of the dream...</div>
+                </div>
+              </div>
+
+              <div style="margin-top:auto; display:flex; justify-content:space-between; align-items:center;">
+                <span style="font-size:.85rem; color:#bfeebb">tags: Dream · Divination</span>
+                <button class="small-btn flip-btn" aria-label="Flip card">Flip</button>
+              </div>
+            </div>
+
+            <div class="card-face card-back">
+              <div style="display:flex; justify-content:space-between; align-items:start;">
+                <div>
+                  <h4 style="margin:0; color:var(--accent); font-family:'Special Elite',cursive;">Influences & Notes</h4>
+                </div>
+                <div><button class="small-btn readmore" data-title="Dream Mirror">Read more</button></div>
+              </div>
+
+              <div class="influences" tabindex="0">
+                <p><strong>Primary influences:</strong></p>
+                <ul>
+                  <li><a href="https://en.wikipedia.org/wiki/Mugwort" target="_blank" rel="noopener">Mugwort & dreamwork</a></li>
+                  <li><a href="#" target="_blank" rel="noopener">Oneiroi notes (personal)</a></li>
+                </ul>
+                <p><strong>Reflection:</strong> Best used during waning moon; test with small mirror and keep journal near bedside.</p>
+              </div>
+            </div>
+          </div>
+        </article>
+
+      </section>
+    </main>
+
+    <div style="display:flex; justify-content:center; margin-top:1rem; gap:1rem;">
+      <button id="addExample" class="small-btn" title="Add sample card (for testing)">+ Add sample card</button>
+      <button id="resetFilters" class="small-btn">Reset filters</button>
+    </div>
+
+    <div class="bottom">Grimoire — until-friday. Add spells by copying one of the <code>&lt;article class="card"&gt;</code> blocks above and editing data attributes.</div>
+
+    <!-- modal for expanded reflection -->
+    <div id="modal" class="modal" role="dialog" aria-modal="true" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <button id="closeModal" class="small-btn" style="float:right">Close</button>
+        <h3 id="modalTitle"></h3>
+        <div id="modalBody" style="color:var(--muted); margin-top:.6rem; line-height:1.6"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    (function(){
+      const grid = document.getElementById('cardGrid');
+      const searchInput = document.getElementById('searchInput');
+      const elementFilter = document.getElementById('elementFilter');
+      const clearBtn = document.getElementById('clearBtn');
+      const resetFilters = document.getElementById('resetFilters');
+      const addExample = document.getElementById('addExample');
+
+      const modal = document.getElementById('modal');
+      const modalTitle = document.getElementById('modalTitle');
+      const modalBody = document.getElementById('modalBody');
+      const closeModal = document.getElementById('closeModal');
+
+      // helper: get card data for searching/filtering
+      function cardData(card){
+        return {
+          title: card.dataset.title || '',
+          tags: (card.dataset.tags || '').split(/\s+/).filter(Boolean),
+          text: (card.querySelector('.card-excerpt')?.textContent || '') + ' ' + (card.querySelector('.influences')?.textContent || '')
+        };
+      }
+
+      // flip handling: toggle by clicking card or flip button
+      function bindCard(card){
+        const inner = card.querySelector('.card-inner');
+        const flipBtn = card.querySelector('.flip-btn');
+        const readmore = card.querySelector('.readmore');
+
+        // clicking the whole card toggles flip (but avoid when clicking links or buttons)
+        card.addEventListener('click', (ev)=>{
+          if (ev.target.closest('a') || ev.target.closest('button') && !ev.target.classList.contains('flip-btn') && !ev.target.classList.contains('readmore')) return;
+          inner.classList.toggle('is-flipped');
+          ev.currentTarget.classList.toggle('flipped');
+        });
+
+        // flip button (explicit)
+        if(flipBtn){
+          flipBtn.addEventListener('click', (ev)=>{
+            ev.stopPropagation();
+            inner.classList.toggle('is-flipped');
+            card.classList.toggle('flipped');
+          });
+        }
+
+        // keyboard: Enter or Space flips when focused on card
+        card.addEventListener('keydown', (ev)=>{
+          if(ev.key === 'Enter' || ev.key === ' '){
+            ev.preventDefault();
+            inner.classList.toggle('is-flipped');
+            card.classList.toggle('flipped');
+          }
+        });
+
+        // read more opens modal with full back content
+        if(readmore){
+          readmore.addEventListener('click', (ev)=>{
+            ev.stopPropagation();
+            const title = card.dataset.title || 'Spell';
+            modalTitle.textContent = title;
+            modalBody.innerHTML = card.querySelector('.influences').innerHTML;
+            modal.classList.add('open');
+            modal.setAttribute('aria-hidden','false');
+            closeModal.focus();
+          });
+        }
+
+      }
+
+      // initialize cards
+      function initCards(){
+        const cards = Array.from(grid.querySelectorAll('.card'));
+        cards.forEach(c => bindCard(c));
+      }
+
+      // search + filter logic
+      function applyFilters(){
+        const q = searchInput.value.trim().toLowerCase();
+        const element = elementFilter.value;
+
+        const cards = Array.from(grid.querySelectorAll('.card'));
+
+        cards.forEach(card=>{
+          const data = cardData(card);
+          const matchesSearch = !q || (data.title+' '+data.text).toLowerCase().includes(q);
+          const matchesFilter = !element || data.tags.map(t => t.toLowerCase()).includes(element.toLowerCase());
+          card.style.display = (matchesSearch && matchesFilter) ? '' : 'none';
+        });
+      }
+
+      searchInput.addEventListener('input', applyFilters);
+      elementFilter.addEventListener('change', applyFilters);
+      clearBtn.addEventListener('click', ()=>{
+        searchInput.value='';
+        elementFilter.value='';
+        applyFilters();
+      });
+
+      resetFilters.addEventListener('click', ()=>{
+        searchInput.value='';
+        elementFilter.value='';
+        applyFilters();
+      });
+
+      // modal close handlers
+      closeModal.addEventListener('click', ()=>{
+        modal.classList.remove('open');
+        modal.setAttribute('aria-hidden','true');
+      });
+      modal.addEventListener('click', (ev)=>{
+        if(ev.target === modal) {
+          modal.classList.remove('open');
+          modal.setAttribute('aria-hidden','true');
+        }
+      });
+      document.addEventListener('keydown', (ev)=>{
+        if(ev.key === 'Escape' && modal.classList.contains('open')){
+          modal.classList.remove('open');
+          modal.setAttribute('aria-hidden','true');
+        }
+      });
+
+      // sample add card button (makes it easy to test / illustrate how to add)
+      addExample.addEventListener('click', ()=>{
+        const template = grid.querySelector('.card').cloneNode(true);
+        // update dataset & title so it's unique
+        const newTitle = 'New Spell ' + (grid.querySelectorAll('.card').length + 1);
+        template.dataset.title = newTitle;
+        template.dataset.tags = 'Herbal';
+        template.querySelector('.card-title').textContent = newTitle;
+        template.querySelector('.card-excerpt').textContent = 'Short description of ' + newTitle;
+        template.querySelector('.influences').innerHTML = '<p><strong>Influences:</strong></p><ul><li><a href="#">example reference</a></li></ul><p>Reflective notes for ' + newTitle + '.</p>';
+        grid.appendChild(template);
+        bindCard(template);
+        applyFilters();
+      });
+
+      // initial
+      initCards();
+
+      // make sure filters apply initially
+      applyFilters();
+
+    })();
+  </script>
+</body>
+</html>
+
+
+
+    /* GRID */
+    .grid {
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));
+      gap:1.25rem;
+      align-items:start;
+    }
+
+    /* CARD (flip) */
+    .card {
+      perspective: 1200px;
+      height: 360px; /* fixed card height so backs fit; tweak as you like */
+    }
+
+    .card-inner{
+      position:relative;
+      width:100%;
+      height:100%;
+      transform-style:preserve-3d;
+      transition: transform 550ms cubic-bezier(.2,.9,.3,1);
+      border-radius: var(--card-radius);
+      cursor:pointer;
+      box-shadow: var(--card-shadow);
+    }
+
+    /* flipped by JS toggling .is-flipped on .card-inner */
+    .card.is-flipped .card-inner { transform: rotateY(180deg); }
+
+    .card-face{
+      position:absolute;
+      inset:0;
+      backface-visibility:hidden;
+      border-radius: var(--card-radius);
+      overflow:hidden;
+      display:flex;
+      flex-direction:column;
+      justify-content:flex-start;
+      align-items:stretch;
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.06));
+      border: 1px solid rgba(27,231,41,0.06);
+    }
+
+    /* front / back specifics */
+    .card-front{ padding:1rem; }
+    .card-back{
+      padding:1rem;
+      transform: rotateY(180deg);
+      background: linear-gradient(180deg, rgba(0,0,0,0.04), rgba(255,255,255,0.01));
+    }
+
+    /* Title / Sigil */
+    .card-title {
+      font-size:1.05rem;
+      color:var(--accent);
+      margin:0 0 .4rem 0;
+      font-family:'Special Elite',cursive;
+    }
+
+    .sigil {
+      width:64px;
+      height:64px;
+      border-radius:8px;
+      display:inline-block;
+      background:linear-gradient(135deg, rgba(27,231,41,0.06), rgba(27,231,41,0.02));
+      border:2px solid rgba(27,231,41,0.18);
+      color:var(--accent);
+      font-size:1.8rem;
+      line-height:64px;
+      text-align:center;
+      margin-right:.6rem;
+      flex:0 0 64px;
+      box-shadow: 0 6px 18px rgba(11,88,24,0.06);
+    }
+
+    .card-head{
+      display:flex;
+      align-items:center;
+      gap:.6rem;
+      margin-bottom:.6rem;
+    }
+
+    .card-excerpt{
+      color:var(--muted);
+      font-size:0.97rem;
+      line-height:1.45;
+      flex:1;
+      overflow:hidden;
+      display:-webkit-box;
+      -webkit-line-clamp:6; /* limit visible lines on front */
+      -webkit-box-orient:vertical;
+      text-overflow:ellipsis;
+    }
+
+    /* back content area: scroll if needed but we provide read more */
+    .card-back .influences {
+      font-size:0.92rem;
+      color:#e7dccd;
+      line-height:1.4;
+      overflow:auto;
+      max-height: calc(100% - 60px);
+      padding-right:6px;
+    }
+
+    .influences a{
+      color:var(--accent);
+      text-decoration:underline;
+      text-underline-offset:3px;
+    }
+
+    .card-actions{
+      display:flex;
+      gap:.5rem;
+      justify-content:space-between;
+      align-items:center;
+      margin-top:.6rem;
+    }
+
+    .small-btn {
+      background:transparent;
+      border:1px solid rgba(27,231,41,0.08);
+      color:var(--muted);
+      padding:.35rem .6rem;
+      border-radius:8px;
+      cursor:pointer;
+      font-size:.9rem;
+    }
+    .small-btn:focus{ outline:2px solid rgba(27,231,41,0.08); }
+
+    /* modal expand for long reflections */
+    .modal {
+      position:fixed;
+      inset:0;
+      display:none;
+      background:rgba(0,0,0,0.6);
+      align-items:center;
+      justify-content:center;
+      z-index:1200;
+      padding:1rem;
+    }
+    .modal.open{ display:flex; }
+    .modal-dialog {
+      max-width:820px;
+      width:100%;
+      max-height:90vh;
+      overflow:auto;
+      background:var(--card);
+      border-radius:12px;
+      padding:1.2rem;
+      border:2px solid rgba(27,231,41,0.08);
+    }
+
+    .modal h3 { color:var(--accent); margin-top:0; font-family:'Special Elite',cursive;}
+
+    /* accessibility focus style */
+    .card:focus-within .card-inner, .card-inner:focus{ outline: 2px solid rgba(27,231,41,0.08); }
+
+    /* footer area */
+    .bottom {
+      text-align:center;
+      margin-top:1.2rem;
+      color:#bfbfb8;
+      font-size:.95rem;
+    }
+
+    /* make it look slightly like cards on parchment */
+    .card-front, .card-back {
+      background-image: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(0,0,0,0.06));
+      border-radius:var(--card-radius);
+    }
+
+    /* small screens - card taller so back fits */
+    @media (max-width:600px){
+      .card{ height: 420px; }
+      .sigil{ width:56px; height:56px; line-height:56px; font-size:1.5rem;}
+    }
+
+    /* instructions area */
+    .hint {
+      font-size:.9rem;
+      color:#a8cfa6;
+      text-align:center;
+      margin-bottom: .6rem;
+    }
