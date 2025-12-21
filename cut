@@ -32,6 +32,17 @@
 ♤
 
 
+             <section>
+                <h2>Grimoire</h2>
+                <p>This is where I collect spells I have created.</p>
+      
+                <div class="button-container">
+                <a href="grimoire.html">View Spells</a>                </div>
+                <div class="symbol left">⚝</div>
+                <div class="symbol right">𓃵</div>
+            </section>
+
+            
                    <section>
                    <h2>Sabbats 2025</h2>
                 <p>General Blog</p>
@@ -40,4 +51,29 @@
                 <a href="sabbats2025.html">View Blog </a>
                 <div class="symbol left">⛥</div>
                 <div class="symbol right">☽</div>
+            </section>
+
+
+                                 <section>
+                <h2>WITCH 102</h2>
+                <p>Intro to English/Language Arts & (Witch)Crafts</p>
+                <p>I fell behind. In order to catch up, I've regrouped and been more selective in choosing materials to engage. It was easier for me to also combine the materials of all three classes into one list -- i.e., one syllabus -- so please see WITCH 101 for the remainder of my engagement with 102 and 103 topics. See this syllabus for only the first four weeks.</p>
+                <p>Course delves into the realms of spellcraft and linguistic expression. Exploring foundational principles of spell work, from harnessing intent and symbolism to casting spells for manifestation, healing, and transformation. Focus on cultivating a poetic voice, drawing from mystical traditions and personal experiences to craft spells, incantations, and enchanted written works.</p>
+                <div class="button-container">
+                <a href="WITCH102Syllabus.html">View Syllabus</a>
+            </div>
+                <div class="symbol left">✍</div>
+                <div class="symbol right">𝒶</div>
+            </section>
+            
+
+                        <section>
+                <h2>WITCH 103</h2>
+                <p>Intro to (Witchy) Home Economics</p>
+                <p>I fell behind. In order to catch up, I've regrouped and been more selective in choosing materials to engage. It was easier for me to also combine the materials of all three classes into one list -- i.e., one syllabus -- so please see WITCH 101 for the remainder of my engagement with 102 and 103 topics. See this syllabus for only the first four weeks.</p>
+                <p>Intro to herbology and potions. Nature, healing, magic, and culinary crafts. This course aims to foster a journey into green and kitchen witchcraft, discovering the magic and wisdom of plants and herbs. Cultivate a magic herb garden, craft herbal remedies and teas with hands-on activities.</p>
+                <div class="button-container">
+                <a href="WITCH103Syllabus.html">View Syllabus </a>
+                <div class="symbol left">✂</div>
+                <div class="symbol right"></div>
             </section>
