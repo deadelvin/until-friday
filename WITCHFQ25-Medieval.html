@@ -1,0 +1,459 @@
+<!-- post.html -->
+<!-- journal-entry.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> The Magical Poet:</title>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400&family=Special+Elite&display=swap" rel="stylesheet">
+  <style>
+    /* Base Styles */
+    body {
+      font-family: 'Merriweather', serif;
+      background-color: #101010;
+      color: #7fe886;
+      margin: 0;
+      padding: 2rem;
+      line-height: 1.6;
+      background-image: radial-gradient(circle at top left, #0a0a0a, #101010, #0f0f0f);
+    }
+
+    /* Journal Box */
+    .journal-container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: #1e1e1e;
+      border: 2px solid #1be729;
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: 0 0 25px rgba(27, 231, 41, 0.3);
+    }
+
+    .journal-title {
+      font-family: 'Special Elite', cursive;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      text-align: center;
+      color: #1be729;
+      text-shadow: 0px 0px 8px #000;
+    }
+
+    .journal-content {
+      font-size: 1.2rem;
+      color: #d8c3a5;
+      white-space: pre-line;
+    }
+
+    .journal-content p {
+  margin-top: 0.5rem;   /* or 0 if you want no extra gap */
+  margin-bottom: 0.5rem;
+  line-height: 1.6;     /* keep line spacing comfortable */
+}
+
+    .journal-subtitle {
+  font-size: 1.2rem;   /* smaller than title */
+  text-align: center;
+  color: #1be729;      /* same green as the title */
+  font-style: italic;  /* keeps it looking like a subtitle */
+  margin-top: -0.5rem; /* pull it closer to the title */
+  margin-bottom: 1.5rem;
+}
+
+.post-subtitle {
+  font-size: 1.3rem;        /* a bit bigger than body text */
+  text-align: left;         /* aligned with the body text */
+  color: #d8ffd8;           /* soft/light green */
+  margin: 1rem 0;           /* space above and below */
+  font-family: 'Merriweather', serif; /* keeps body style for contrast */
+}
+
+    /* Symbols */
+    .symbol {
+      position: absolute;
+      font-size: 2.5rem;
+      color: rgba(242, 228, 185, 0.6);
+      animation: glow 5s infinite ease-in-out;
+    }
+    .symbol.left { top: 30px; left: 30px; }
+    .symbol.right { top: 30px; right: 30px; }
+
+    @keyframes glow {
+      0% { text-shadow: 0 0 5px #f1ffec99, 0 0 15px #1be729; }
+      50% { text-shadow: 0 0 10px #c5ffcb, 0 0 30px #1be729; }
+      100% { text-shadow: 0 0 5px #f1ffec99, 0 0 15px #1be729; }
+    }
+
+    /* Back link */
+    .back-link {
+      display: block;
+      margin-top: 2rem;
+      text-align: center;
+      font-size: 1.2rem;
+      font-family: 'Special Elite', cursive;
+    }
+
+    .back-link a {
+      color: #1be729;
+      text-decoration: none;
+      border-bottom: 1px dashed #1be729;
+      transition: color 0.3s ease;
+    }
+
+    .back-link a:hover {
+      color: #7fe886;
+    }
+
+    /* Social Media Icons */
+    .social {
+      display: flex;
+      justify-content: center;
+      margin-top: 2rem;
+      gap: 15px;
+    }
+
+    .social a {
+      color: #1be729;
+      font-size: 1.8rem;
+      text-decoration: none;
+      transition: transform 0.3s ease, color 0.3s ease;
+    }
+
+    .social a:hover {
+      color: #7fe886;
+      transform: scale(1.2) rotate(-5deg);
+    }
+
+    ul {
+    list-style: none; /* Ensures no default bullets */
+    padding-left: 0; /* Removes default padding */
+}
+
+ul li {
+    color: #dbc5b9; /* Matches text color with other columns */
+    display: flex;
+    align-items: center; /* Aligns text and arrow symbol properly */
+}
+
+ul li::before {
+    content: "➵"; /* Custom arrow bullet */
+    color: #1be729; /* Keeps arrow green */
+    font-size: 1.5rem; /* Adjust size */
+    margin-right: 10px; /* Adds spacing between bullet and text */
+}
+
+.references {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid #1be729; /* optional divider */
+}
+
+.references-title {
+  font-size: 1.5rem;
+  color: #1be729; /* matches the title style */
+  text-align: left;
+  margin-bottom: 1rem;
+  font-family: 'Special Elite', cursive;
+}
+
+.reference-list p {
+  margin: 0.5rem 0;       /* tighter spacing between entries */
+  padding-left: 2rem;   /* indent whole block */
+  text-indent: -2.5rem;   /* pull first line back */
+}
+a {
+  color: #1be729;          /* your bright green */
+  text-decoration: none;   /* removes underline */
+}
+
+a:hover {
+  color: #7fe886;          /* softer green on hover */
+}
+
+.post-date {
+  font-size: 0.9rem;          /* smaller than subtitle */
+  color: #c8ffc8;             /* subtle light green */
+  text-align: center;          /* align under subtitle/title */
+  margin-top: -0.3rem;        /* pull it closer to subtitle */
+  margin-bottom: 1.5rem;      /* space before content */
+  font-style: italic;          /* optional emphasis */
+}
+
+/* Cite Button */
+.cite-btn {
+  background-color: #1be729;
+  color: #101010;
+  border: none;
+  padding: 0.7rem 1.5rem;
+  border-radius: 8px;
+  font-family: 'Special Elite', cursive;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.cite-btn:hover {
+  background-color: #101010;
+  color: #1be729;
+  border: 1px solid #1be729;
+}
+
+/* Modal Overlay */
+.modal {
+  display: none; 
+  position: fixed; 
+  z-index: 999; 
+  padding-top: 100px; 
+  left: 0; 
+  top: 0; 
+  width: 100%; 
+  height: 100%;
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* Modal Content Box */
+.modal-content {
+  background-color: #1e1e1e;
+  margin: auto;
+  padding: 20px;
+  border: 2px solid #1be729;
+  width: 70%;
+  border-radius: 12px;
+  color: #d8c3a5;
+  font-family: 'Merriweather', serif;
+  box-shadow: 0 0 20px #1be729;
+}
+
+/* Close Button */
+.close {
+  color: #1be729;
+  float: right;
+  font-size: 2rem;
+  cursor: pointer;
+}
+.close:hover {
+  color: #ffffff;
+}
+
+/* Floating Share Bar */
+.share-bar {
+  position: fixed;
+  top: 50%;
+  left: 80px; /* adjust distance from edge */
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  z-index: 1000;
+}
+
+/* Title */
+.share-title {
+  font-family: 'Special Elite', cursive;
+  font-size: 1rem;
+  color: #1be729;
+  text-shadow: 0 0 6px #1be729, 0 0 12px #7fe886;
+  margin-bottom: 10px;
+}
+
+/* Placeholder Icons */
+.share-bar a {
+  font-size: 2rem;
+  color: transparent;               /* makes the shape hollow */
+  -webkit-text-stroke: 1px #1be729; /* neon outline */
+  text-decoration: none;
+  transition: transform 0.3s ease, -webkit-text-stroke 0.3s ease;
+  text-shadow: 0 0 6px rgba(27, 231, 41, 0.6);
+}
+
+.share-bar a:hover {
+  -webkit-text-stroke: 1px #7fe886; /* glow shift on hover */
+  transform: scale(1.3) rotate(-8deg);
+}
+
+.footnote {
+  position: relative;
+  cursor: help;
+  color: #1be729;
+  font-size: 0.8rem;
+}
+
+.footnote-text {
+  visibility: hidden;
+  background-color: #1e1e1e;
+  color: #f5e8d0;
+  text-align: left;
+  border-radius: 5px;
+  padding: 8px;
+  position: absolute;
+  z-index: 10;
+  bottom: 125%;
+  left: 0;
+  width: 250px;
+  box-shadow: 0 0 5px #1be729;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.footnote:hover .footnote-text {
+  visibility: visible;
+  opacity: 1;
+}
+
+.blog-image {
+  text-align: center;
+  margin: 2rem auto;
+}
+
+.blog-image {
+  text-align: center;
+  margin: 2rem auto;
+}
+
+.blog-image img {
+  display: block;
+  width: 90%;              /* fills most of your green bordered box */
+  max-width: 720px;        /* caps it so it doesn't stretch too much */
+  margin: 0 auto;
+  border: 2px solid #1be729;
+  border-radius: 10px;
+  box-shadow: 0 0 12px rgba(27, 231, 41, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.blog-image img:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 22px rgba(27, 231, 41, 0.5);
+}
+
+.blog-image figcaption {
+  font-size: 0.9rem;
+  color: #d8c3a5;
+  margin-top: 0.5rem;
+  font-style: italic;
+}
+
+
+.numbered-list {
+  color: #d8c3a5;              /* matches your paragraph text */
+  font-family: 'Merriweather', serif;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-left: 2rem;           /* indents list slightly */
+  counter-reset: list-counter; /* optional custom numbering */
+}
+
+.numbered-list li {
+  margin-bottom: 0.6rem;
+}
+
+.numbered-list li::marker {
+  color: #1be729;
+  text-shadow: 0 0 5px rgba(27, 231, 41, 0.5);
+}
+
+.sub-bullets {
+  list-style-type: "➤ ";     /* small arrow bullet, fits your style */
+  margin-left: 2rem;         /* indent under main point */
+  color: #dbc5b9;            /* slightly softer than main text */
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.sub-bullets li {
+  margin: 0.4rem 0;
+}
+.sub-bullets li::marker {
+  color: #1be729;
+  text-shadow: 0 0 4px rgba(27, 231, 41, 0.5);
+}
+  </style>
+</head>
+<body>
+
+  <!-- Emo symbols (placeholders) -->
+  <div class="symbol left">🔥</div>
+  <div class="symbol right">🐈‍⬛</div>
+
+    <div class="back-link">
+    <a href="WITCH101Blog.html">← Back to All Entries</a>
+  </div>
+
+
+<div class="share-bar">
+  <div class="share-title">✦ Share This ✦</div>
+  <a id="fbShare" href="#" target="_blank" title="Share on Facebook">ⓕ</a>
+  <a id="bsShare" href="#" target="_blank" title="Share on Bluesky">ཐི༏ཋྀ</a>
+  <a id="rdShare" href="#" target="_blank" title="Share on Reddit">𖠌</a>
+</div>
+
+<script>
+  const pageUrl = encodeURIComponent(window.location.href);
+  const pageTitle = encodeURIComponent(document.title);
+
+  document.getElementById('fbShare').href = `https://www.facebook.com/sharer/sharer.php?u=${pageUrl}`;
+  document.getElementById('bsShare').href = `https://bsky.app/intent/compose?text=Check%20this%20out:%20${pageUrl}`;
+  document.getElementById('rdShare').href = `https://www.reddit.com/submit?url=${pageUrl}&title=${pageTitle}`;
+</script>
+
+<div class="journal-container">
+  <h1 class="journal-title"> The Magical Poet:</h1>
+<h2 class = "journal-title"> How Emotion Lights Hearth-Fire, Images Emerge in Smoke, and Familiars Speak in Elementals</h2>
+  <h2 class="journal-subtitle">by dead-elvin</h2>
+    <p class="post-date">Dec. 28, 2025</p>
+  <div class="journal-content">
+<p> Some linguists posit that “human language [allows people to] inject mental-reaction-controlling speech symbol streams into each other’s brains” and that, in some ways, this is a form of – or at the very least analogous to – mind control (Sereno 2014, 2, 10). Symbols, in the context of how witches (magical practitioners, or whatever label you like) use language for witchcraft, are, then, connected to language. In this post, I’ll contemplate how emotion in spells might initiate magic. In other words, it lights the fire on your hearth. Additionally, I show that evoking imagery – the poet’s principle of “show don’t tell” – sends that spell through the air so that it can be passed on to other people.</p>
+<p> According to Martin Sereno, birdsongs are closest to “human speech than are the vocalizations of other animals, some of which can even modulate laryngeal harmonics” (2014, 5). He states that emotion instigates the bird’s singing, but that beyond the point of motivation, the sounds emitted by birds “carry no additional specific emotional baggage” (2014, 6). Additionally, the socialization of the bird, not its genetics, is key to what songs they will sing and how they will sing them (2014, 5). </p>
+<h3> Magically, this might be applied by: </h3>
+<li> Learning the language/songs of other-than-humans (especially but not only birds) who you are connected to so you may communicate with them.</li>
+<li> Reflecting on the emotion which instigates your magical workings/incantations. What comes after casting the spell may carry the magical message, but the emotional state from whence it is “lit” is key. </li>
+<li> reflecting on how your formative years may have influenced what messages you express and how you express those messages, which may influence your magic. </li>
+<p> Additionally, Sereno notes that “Humpback whales learn to precisely reproduce long sequences of sounds and culturally transmit them to animals that are genetically unrelated [and] the underwater acoustic environment of the ocean is quite reverberant, due to the faster and more efficient propagation of sound in water and as a result of reflections from the air-water boundary” (2014, 6). </p>
+<p>Magically, we might draw out lessons here on: </p>
+<li>cross-species communication (the intelligent awareness of other than humans)</li>
+<li>the way that sound/messages travel different depending on the atmosphere
+the elementals (water, air – fire, earth) </li>
+<li>and boundaries (such as those many witches obsess over – thresholds like doorways, cusps of transition, etc.)</li>
+<p>In Medieval Christian thought, speech and symbols could only work from one intelligent source to another, and so magic was only done by a human providing the symbolic impact of words to demons who were the intelligent other source, who performed the magic (Esoterica 2020). But, define “intelligence.” Other than humans clearly recognize symbols, and have their own speech and means of communicating. Trees, for example, are intelligent – even Western science knows this now, once human-centricity is removed. </p>
+<p>Medieval scientific thought held that the four classical elements were what made up all matter: fire, earth, water, air. Between these were hot, dry, cold, and wet (Centre Place 2018). For Humpback whales, perhaps their core elementals are different and a magician working with such other-than-humans, and whose practice draws from the four elements, might benefit by shifting the core elements they work with. For a Humpback, the core element is a boundary-element for a human; the Humpback’s element for communication is that which is “between” water and air for humans. That element is “wet.” </p>
+<p>It’s possible that Sereno’s evidential point that, for humans, vision helps us interpret certain concepts more than other senses do is also magically useful – particularly for visualization. For example, Sereno states that the word or concept of “over” can be symbolically provided to humans by visually representing something going over something else (2014, 9). As such, vision is particularly important for humans; but this is not a universal. For example, he states: “[t]here are many other animals for whom vision is not the primary distal sense, such as echolocating bats or electric fish (many of which are nearly blind); bats and electric fish must rely primarily on serial assembly of auditory and electrosensory ‘glances’; for a bat, it would probably be easier to comprehend an auditory ‘picture’ of ‘over’ – a small object moving over a larger one – than it would be for it to comprehend a visual one” (2014, 9). </p>
+<p>Magically, this reinforces visualization, vision boards, etc. as magical practice for humans – we understand what we see very well, and we can visualize what we conceptualize very well – i.e., a major mode in which we bring what’s in our minds into the world is imagery. Hence, we have visualization as a medium of manifestation. But perhaps it is worth playing with the other senses in order to communicate with other-than-humans [familiars?] such as trees, whales, cats, and bats, who can then comprehend better what we are communicating to them, perhaps even aid us in our manifestations. </p>
+<p>Speaking of familiars, according to Thomas Wright (1852), witchcraft, in England, was not conceptualized as it was “on the mainland” – they did not host nor attend witch’s sabbaths nor make compacts with the devil (175). Instead, they found “ready instruments in certain imps, of a very equivocal character, to wreak their malice on man or beast” (Wright 1852, 175). Such familiars were either “vermin” or cats, which they gave “undignified names” like Ryffin, Piggin, Titty, Jack, Tom, Smack, Pluck, Blue, Catch, White, Calicut, Hardname, Great Dick, Little Dick, and Willet. </p>
+<p>But, Wright’s main point (in chapter fourteen) is that poets were particularly drawn to studying witchcraft – not nesc. to practicing it, but to integrating its culture and motifs into their own poetry, often “to profit by the mania of the day” (Wright 1852, 183). Though, they were also assimilating witchcraft into their previously understood literary archetypes and references. For example, “The three witches in Macbeth appear as the weird sisters or fates of the Scandinavian mythology, fixing and watching the fate of individuals in the hour of battle; and almost in the same breath they answer the calls of their familiar imps, like the witches of Elizabeth’s time” (Wright 1852, 177). Another example of comprehending contemporary [for their time] witchcraft by means of assimilating them into older archetypes comes by way of Hecate: </p>
+<p>“Middleton, Shakespere’s [sic] contemporary, whose witch-poetry he appears to have imitated, has left a play, entitled ‘The Witch.’ Here again the abode of Hecate is a cave, and the boiling caldron figures in it, but the mystic triad of the witches is changed to an indefinite number, four of whom bear the names of Stadlin, Hoppo, Hellwain, and Puckle; and their familiars are called Tetty, Tiffin, Suckin, Pidgen, Liard, and Robin. It is evident from this…that Middleton had been studying Reginald Scott, and the witch trials of the preceding reign. In Middleton, the witches require an ointment (like the witches of the continent [whom Scott wrote about]) to transfer themselves to a distance” (Wright 1852, 178-179). </p>
+<p>And so the connection between poetry, song, and witch’s charms and incantations is uncanny. As I write this, it is the time between Yuletide and New Year’s. A such, I’ll give a seasonally appropriate example of this connection between poetry/song and magic. In England, according to Charles Hardwick (1872), the “New Year” was traditionally not January 1st (58). Rather, “The practice of regarding the first of January as the commencement of a new year is of very modern origin…Prior to 1752, in most legal or official matters, and in private records, the year commenced on the 25th of March. At this time an Act of Parliament was passed which ‘directed that the legal year which then commenced in some parts of this country in March, and others in January, should universally be deemed to begin on the first of January’” (Hardwick 1872, 58). </p>
+<p>Prior to this shift, however, the “Old people” would practice a divination of the weather in March by observing “the last three days of March” (Hardwick 1872, 67). This was called “borrowing days” and Hardwick states they would “thus rhyme about” (Hardwick 1872, 67): </p>
+<p>March borrowed from April </p>
+<p>Three days, and they were ill ;</p>
+<p>The first o’ them war wind an’ weet, </p>
+<p>The next o’ them war snaw an’ sleet, </p>
+<p>The last o’ them war wind an’ rain, </p>
+<p>Which gaed the silly pair ewes come toddling hame. </p>
+<p>It is widely uncontested that there is a connection between poetry and song, and likewise the connection between poetry and magical incantations. Another fun seasonal example is the New Year’s Eve chant which actually verbally conducts a manifestation. Called “Apple-howling,” the following was chanted by “troops of boys gather[ed] round the orchards on New Year’s Eve” (Harwick 1872, 66): </p>
+<p> Stand fast root, bear well top, </p>
+<p> Pray God send us a howling crop; </p>
+<p> Every twig, apples big; </p>
+<p> Every bough, apples enow; </P>
+<p> Hats full, caps full, </p>
+<p> Full quarter sacks full.</p>
+<p>I return to a brief reference to the middle ages again, which clearly illustrates the connection between poetry and magic. Wright claimed, “the people of the middle ages first saw the type of the magician in the poets and philosophers of classic days…medicine was also closely allied with witchcraft and the forbidden sciences; many of the herbs and other articles which restored the patient to health had qualities of a more mysterious nature, and the philter or the more fearful mixture of the sorcerer’s caldron, which had the power of commanding the spirit of darkness, were but an extension of the physician’s specific” (Wright 1852, 67). So, what is packed into a poem, into a song, which charms and incantations offer the magician? </p> 
+<p> As Neill Goddard states, “Ideas are impressed on the subconscious through the medium of feeling. No idea can be impressed on he subconscious until it is felt, but once felt – be it good, bad, or indifferent – it must be expressed.” </p> 
+<p> Remember Sereno’s claims that, linguistically speaking, language is a form of mind control. Waite & Lévi call this concept of influencing others’ minds, when done with intention (i.e., magic), the “Magic Chain” – it is the power to influence others and have them continue on your magical workings, even if they don’t consciously know they’re doing it (Waite & Lévi 1897, 79). Given that humans are especially developed for visual input, we might then use language to insert images (and use images themselves, sure) into the minds of others. For humans, I have analogized that our emotions might be one means of starting the “fire” of magic, and images within our magical practice are the smoke being sent up. In order to work our magic through this Chain of influence through our witchy, other-than-human familiars, we might use whatever sensory input they are most attuned to, and whatever element is more conducive to their methods of meaning-making and communication travel. </p>
+<h3>References</h3>
+<p>Centre Place, dir. 2018. Medieval Science and Sorcery. 01:45:18. https://www.youtube.com/watch?v=Wj59rsHeLzY.</p>
+<p>ESOTERICA, dir. 2020. Medieval Magic - Scholastic Analysis of Magic and Necromancy in the Middle Ages. 28:18. https://www.youtube.com/watch?v=Lymw2aaiSto.</p>
+<p>Hardwick, Charles. 1872. Traditions, Superstitions, and Folklore, (Chiefly Lancashire and the North of England:) Their Affinity to Others in Widely-Distributed Localities; Their Eastern Origin and Mythical Significance. A. Ireland.</p>
+ <p>Lévi, É, and Arthur Edward Waite. 1897. <i>The Mysteries of Magic: A Digest of the Writings of Éliphas Lévi [Pseud.].</i> K. Paul, Trench, Trübner.</p>
+<p>Sereno, Martin I. 2014. “Origin of Symbol-Using Systems: Speech, but Not Sign, without the Semantic Urge.” Philosophical Transactions of the Royal Society B: Biological Sciences 369 (1651): 20130303. https://doi.org/10.1098/rstb.2013.0303.</p>
+<p>Wright, Thomas. 1852. Narratives of Sorcery and Magic, from the Most Authentic Sources. Redfield. </p>
+  <!-- Back to entries -->
+  <div class="back-link">
+    <a href="WITCH101Blog.html">← Back to All Entries</a>
+  </div>
+         <div class="social">
+        <a href="https://bsky.app/profile/until-friday.bsky.social" target="_blank" data-tooltip="Bluesky">⛆</a>
+        <a href="https://www.tiktok.com/@until_friday" target="_blank" data-tooltip="tiktok">✘</a>
+        <a href="blank" target="_blank" data-tooltip="This Isn't Really a Link But I wanted Three Images Here That Looked Clickable Sorry">☻</a>
+    </div>
+</body>
+</html>
